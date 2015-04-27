@@ -1,5 +1,5 @@
 class SessionController < ApplicationController
-  skip_before_action :check_login, only: [:new]
+  skip_before_action :check_login, only: [:new,:create]
 
   def new
     if logged_in?

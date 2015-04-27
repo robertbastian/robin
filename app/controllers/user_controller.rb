@@ -1,8 +1,8 @@
 class UserController < ApplicationController
-	before_action :check_login
+	skip_before_action :check_login, only: [:new,:create]
 	
 	def leaderboard
-		@users = User.order(count: :desc)
+		@users = User.order(score: :desc)
 	end
 
 	def show
@@ -10,18 +10,20 @@ class UserController < ApplicationController
 		@me = @user == @current_user
 	end
 
-	def profile
-		@user = current_user
-		render 'show'
-	end
-
 	def new
+		@user = User.new
 	end
 
 	def create
 		@user = User.new(user_params)
-		@user.save
-		redirect_to action: :profile
+		if @user.valid?
+			@user.save
+			log_in @user
+			redirect_to root_url
+		else
+			flash[:danger] = @user.errors.full_messages.first
+			render 'new'
+		end
 	end
 
 	private

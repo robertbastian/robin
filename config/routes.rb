@@ -2,10 +2,7 @@ Rails.application.routes.draw do
   
   # Dashboard
   root 'dashboard#front'
-
-  get '/dashboard/current'
-
-  get '/sessions/new'
+  get '/dashboard' => 'dashboard#dashboard'
 
   # Sessions
   get '/login' => 'session#new'
@@ -13,11 +10,11 @@ Rails.application.routes.draw do
   get '/logout' => 'session#destroy'
 
   # Creating a new user (i.e. signup)
-  get '/u/new' => 'user#new'
-  post '/u' => 'user#create', as: 'users'
+  get '/signup' => 'user#new'
+  post '/signup' => 'user#create'
+
   # Showing a user
   get '/u/:name' => 'user#show', as: 'user'
-  get '/profile' => 'user#profile'
   # Showing all users
   get '/leaderboard' => 'user#leaderboard'
 

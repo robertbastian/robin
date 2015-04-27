@@ -7,5 +7,5 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
   include ApplicationHelper
 	
-	before_action :check_login
+  before_action :check_login
 end
