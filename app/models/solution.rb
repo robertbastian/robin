@@ -1,4 +1,4 @@
-class Problem < ActiveRecord::Base
+class Solution < ActiveRecord::Base
   belongs_to :user
   belongs_to :problem
 end

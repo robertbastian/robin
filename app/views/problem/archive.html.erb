@@ -1,0 +1,19 @@
+<h1>All problems</h1>
+<% if @problems.size == 0 %>
+	<p> No problems found </p>
+<% else %>
+	<table>
+		<tr>
+			<th>Title</th>
+			<th>Set by</th>
+			<th>Date</th>
+		</tr>
+		<% @problems.each do |problem| %>
+			<tr>
+				<td><%= link_to problem.title, problem %></td>
+				<td><%= link_to problem.author.name, problem.author %></td>
+				<td><%= problem.created_at %></td>
+			</tr>
+		<% end %>
+	</table>
+<% end %>

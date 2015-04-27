@@ -1,0 +1,7 @@
+<h1>Dashboard</h1>
+<% if logged_in? %>
+<h2>Logged in as <%= @current_user.name %></h2>
+<% else %>
+<h2> Not logged in</h2>
+<% end %>
+<p>Find me in app/views/dashboard/current.html.erb</p>
