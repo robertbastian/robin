@@ -3,11 +3,18 @@ Rails.application.routes.draw do
   # Dashboard
   root 'dashboard#front'
 
-  # Sessions
-  get 'login' => 'session#new'
-  post 'login' => 'session#create'
-  get 'logout' => 'session#destroy'
+  get '/dashboard/current'
 
+  get '/sessions/new'
+
+  # Sessions
+  get '/login' => 'session#new'
+  post '/login' => 'session#create'
+  get '/logout' => 'session#destroy'
+
+  # Creating a new user (i.e. signup)
+  get '/u/new' => 'user#new'
+  post '/u' => 'user#create', as: 'users'
   # Showing a user
   get '/u/:name' => 'user#show', as: 'user'
   get '/profile' => 'user#profile'
