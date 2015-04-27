@@ -1,11 +1,17 @@
 class UserController < ApplicationController
-
-	def index
-		@users = User.order(points: :desc)
+	before_action :check_login
+	
+	def leaderboard
+		@users = User.order(count: :desc)
 	end
 
 	def show
-		@user = User.find(params[:name])
-		@me = @user[:id] == session[:userid]
+		@user = User.find_by(name: params[:name])
+		@me = @user == @current_user
+	end
+
+	def profile
+		@user = current_user
+		render 'show'
 	end
 end

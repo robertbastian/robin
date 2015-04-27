@@ -1,5 +1,10 @@
 class SessionController < ApplicationController
+  skip_before_action :check_login, only: [:new]
+
   def new
+    if logged_in?
+      redirect_to root_url
+    end
   end
 
   def create

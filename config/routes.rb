@@ -1,11 +1,7 @@
 Rails.application.routes.draw do
   
-  get 'dashboard/current'
-
-  get 'sessions/new'
-
   # Dashboard
-  root 'dashboard#current'
+  root 'dashboard#front'
 
   # Sessions
   get 'login' => 'session#new'
@@ -13,9 +9,10 @@ Rails.application.routes.draw do
   get 'logout' => 'session#destroy'
 
   # Showing a user
-  get '/u/:name' => 'user#show'
+  get '/u/:name' => 'user#show', as: 'user'
+  get '/profile' => 'user#profile'
   # Showing all users
-  get '/leaderboard' => 'user#index'
+  get '/leaderboard' => 'user#leaderboard'
 
   # Showing all problems
   get '/archive' => 'problem#archive'

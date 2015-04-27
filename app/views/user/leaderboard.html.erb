@@ -1,0 +1,6 @@
+<table>
+	<tr><th>User</th><th>Points</th></tr>
+	<% @users.each do |user| %>
+		<tr><td><% link_to user_url(user), user.name %></td><td><%=user.count%></td></tr>
+	<% end %>
+</table>
