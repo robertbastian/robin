@@ -11,7 +11,12 @@
 		<% @problems.each do |problem| %>
 			<tr>
 				<td><%= link_to problem.title, problem %></td>
-				<td><%= link_to problem.author.name, problem.author %></td>
+				<!--
+				Had to change problem.author to problem.user, because that's the name
+				it's determined to be in problem.rb, but it's probably possible to
+				change that
+				-->
+				<td><%= link_to problem.user.name, problem.user %></td>
 				<td><%= problem.created_at %></td>
 			</tr>
 		<% end %>

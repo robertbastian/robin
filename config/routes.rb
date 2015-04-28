@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   # Showing all problems
   get '/archive' => 'problem#archive'
   # Showing an old problem
-  get '/problem/:id' => 'problem#show'
+  get '/problem/:id' => 'problem#show', as: 'problem'
 
   #Setting a problem
   get '/setProblem' => 'problem#new'
