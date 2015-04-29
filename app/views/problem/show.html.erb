@@ -1,2 +1,3 @@
 <h1><%= @problem.title %></h1>
 <p><%= @problem.text %></p>
+<%= link_to 'Write solution', solutions_url(@problem.id) %>
