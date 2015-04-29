@@ -1,0 +1,6 @@
+dark orange - #a9541b
+mid orange - #c3671e
+teal - #486355
+dark grey - #665752
+light grey - #d6d7e9
+beige - #d6d7e9
