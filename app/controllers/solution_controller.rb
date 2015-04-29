@@ -7,6 +7,8 @@ class SolutionController < ApplicationController
 	def create
 		@solution = current_user.solutions.build(solution_params)
 		@solution.save
+		@problem = Problem.find(params[:problem_id])
+		redirect_to @problem
 	end
 
 	private
