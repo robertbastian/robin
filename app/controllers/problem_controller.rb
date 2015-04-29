@@ -18,6 +18,7 @@ class ProblemController < ApplicationController
 		# save returns a boolean that is true if problem is valid
 			redirect_to root_url
 		else
+			flash[:danger] = @problem.errors.full_messages.first
 			render 'new'
 		end
 	end
