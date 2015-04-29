@@ -27,8 +27,13 @@ Rails.application.routes.draw do
   get 'problem/:id/solutions' => 'solution#forProblem'
   get 'solution/:id' => 'solution#show', as: 'solution'
 
-  #Setting a problem
+  # Setting a problem
   get '/setProblem' => 'problem#new'
   post '/setProblem' => 'problem#create'
+
+  # Solving a problem
+  # These "as"s are a mess... (they're used to generate the html forms correctly)
+  get '/problem/:problem_id/solve' => 'solution#new', as: 'solutions'
+  post '/problem/:problem_id/solve' => 'solution#create'
 
 end
