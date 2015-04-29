@@ -14,11 +14,12 @@ class ProblemController < ApplicationController
 
 	def create
 		@problem = current_user.problems.build(problem_params)
-		# TODO: Clean up what happens on successful/unsuccessful saving
-		if @problem.valid?
-			@problem.save
+		if @problem.save
+		# save returns a boolean that is true if problem is valid
+			redirect_to root_url
+		else
+			render 'new'
 		end
-		redirect_to root_url
 	end
 
 	private
