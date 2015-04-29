@@ -3,7 +3,9 @@ class SolutionController < ApplicationController
 		@problem = Problem.find(params[:problem_id])
 		@solution = Solution.new
 	end
-
+	def show
+		@solution = Solution.find(params[:id])
+	end
 	def create
 		@solution = current_user.solutions.build(solution_params)
 		@solution.save
