@@ -1,10 +1,16 @@
 <h2>Solutions</h2>
 <table class="table">
-	<tr><th>Title</th><th>Solution</th><th>Points</th><th>Problem</th></tr>
+	<tr>
+		<th>Title</th>
+		<th>Solution</th>
+		<th>Points</th>
+		<th>Problem</th>
+	</tr>
 	<% @solutions.each do |solution| %>
 		<tr><td><%= link_to solution.title, solution %></td>
 			<td><%= solution.text.truncate(50, separator: '\n') %></td>
 			<td><%=solution.points%></td>
 			<td><%= link_to solution.problem.title, solution.problem%></td></tr>
+
 	<% end %>
 </table>
