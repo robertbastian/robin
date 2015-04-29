@@ -23,6 +23,10 @@ Rails.application.routes.draw do
   # Showing an old problem
   get '/problem/:id' => 'problem#show', as: 'problem'
 
+  # Solutions
+  get 'problem/:id/solutions' => 'solution#forProblem'
+  get 'solution/:id' => 'solution#show', as: 'solution'
+
   #Setting a problem
   get '/setProblem' => 'problem#new'
   post '/setProblem' => 'problem#create'

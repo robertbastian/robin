@@ -1,5 +1,18 @@
-<%= @user.name %>
-<%= @user.score %>
-<% if @me %>
-THIS IS ME
-<% end %>
+<h1><%= @user.name %>
+<small><%= @user.score %> Points</small></h1>
+
+<h2>Solutions</h2>
+<table class="table">
+	<tr><th>Title</th><th>Points</th><th>Problem</th></tr>
+	<% @solutions.each do |solution| %>
+		<tr><td><%= link_to solution.title, solution %></td><td><%=solution.points%></td><td><%= link_to solution.problem.title, solution.problem%></td></tr>
+	<% end %>
+</table>
+
+<h2>Problems</h2>
+<table class="table">
+	<tr><th>Title</th><th>Points</th></tr>
+	<% @problems.each do |problem| %>
+		<tr><td><%= link_to problem.title, problem %></td><td><%=problem.points%></td></tr>
+	<% end %>
+</table>
