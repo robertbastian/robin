@@ -36,4 +36,6 @@ Rails.application.routes.draw do
   get '/problem/:problem_id/solve' => 'solution#new', as: 'solutions'
   post '/problem/:problem_id/solve' => 'solution#create'
 
+  resources :dogs # ignore this
+
 end
