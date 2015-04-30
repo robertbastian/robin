@@ -1,4 +1,4 @@
-class SolutionController < ApplicationController
+class SolutionsController < ApplicationController
 	def new
 		@problem = Problem.find(params[:problem_id])
 		@solution = Solution.new

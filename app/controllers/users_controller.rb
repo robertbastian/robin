@@ -1,4 +1,4 @@
-class UserController < ApplicationController
+class UsersController < ApplicationController
 	skip_before_action :check_login, only: [:new,:create]
 	
 	def leaderboard

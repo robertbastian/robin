@@ -1,4 +1,4 @@
-class ProblemController < ApplicationController
+class ProblemsController < ApplicationController
 
 	def archive
 		@problems = Problem.all
