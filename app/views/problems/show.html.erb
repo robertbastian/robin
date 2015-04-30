@@ -1,5 +1,5 @@
 <h1><%= @problem.title %></h1>
 <p><%= @problem.text %></p>
 
-<%= render "solution/solutions_table" %>
-<%= link_to 'Write solution', solutions_url(@problem.id) %>
+<%= render "solutions/solutions_table" %>
+<%= link_to 'Write solution', new_problem_solution_path(@problem) %>

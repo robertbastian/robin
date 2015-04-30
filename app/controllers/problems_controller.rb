@@ -1,6 +1,6 @@
 class ProblemsController < ApplicationController
 
-	def archive
+	def index
 		@problems = Problem.all
 	end
 

@@ -1,4 +1,4 @@
-<%= form_for @solution, html: { method: :post } do |f| %>
+<%= form_for @solution, url: problem_solutions_path, html: { method: :post } do |f| %>
 	<h1><%= @problem.title %></h1>
 	<p><%= @problem.text %></p>
 	<p>Problem set by <%= @problem.author.name %></p>
