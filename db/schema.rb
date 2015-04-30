@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150430213149) do
+ActiveRecord::Schema.define(version: 20150430214015) do
 
   create_table "problems", force: :cascade do |t|
     t.string   "title"
@@ -32,6 +32,8 @@ ActiveRecord::Schema.define(version: 20150430213149) do
     t.string   "title"
     t.boolean  "scored",     default: false
   end
+
+  add_index "solutions", ["scored"], name: "index_solutions_on_scored"
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
