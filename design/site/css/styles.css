@@ -12,9 +12,12 @@ h6 {
 }
 nav ul {
   padding-top: 15px;
+  position: absolute;
+  right: 0;
 }
 nav ul li {
   display: inline;
+  padding: 0 10px 0 10px;
 }
 nav a {
   text-decoration: none;
