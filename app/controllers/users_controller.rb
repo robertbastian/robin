@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
 	skip_before_action :check_login, only: [:new,:create]
 	
-	def leaderboard
+	def index
 		@users = User.order(score: :desc)
 	end
 
 	def show
-		@user = User.find_by(name: params[:name])
+		@user = User.find_by_name(params[:id])
 		@problems = @user.problems
 		@solutions = @user.solutions
 		@me = @user == @current_user
@@ -28,9 +28,9 @@ class UsersController < ApplicationController
 		end
 	end
 
-	private
-		def user_params
-			params.require(:user).permit(:name, :email, :password, :password_confirmation)
-		end
+	private 
+	def user_params
+		params.require(:user).permit(:name, :email, :password, :password_confirmation)
+	end
 
 end

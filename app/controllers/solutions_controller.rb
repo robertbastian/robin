@@ -15,11 +15,11 @@ class SolutionsController < ApplicationController
 		redirect_to @problem
 	end
 
-	private
-		# Not sure if this is tidiest thing to do:
-		# Get the :text from the form for the solution, and then tack on the problem_id
-		# which is just floating around in params
-		def solution_params
-			params.require(:solution).permit(:text).update(problem_id: params[:problem_id])
-		end
+	# Not sure if this is tidiest thing to do:
+	# Get the :text from the form for the solution, and then tack on the problem_id
+	# which is just floating around in params
+	private 
+	def solution_params
+		params.require(:solution).permit(:text).update(problem_id: params[:problem_id])
+	end
 end
