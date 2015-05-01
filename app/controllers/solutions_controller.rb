@@ -1,7 +1,12 @@
 class SolutionsController < ApplicationController
 	def new
 		@problem = Problem.find(params[:problem_id])
-		@solution = Solution.new
+		if @problem == current_problem
+			@solution = Solution.new
+		else
+			flash[:danger] = "You can't submit solutions for this problem anymore"
+			redirect_to @problem
+		end
 	end
 
 	def show
@@ -9,13 +14,13 @@ class SolutionsController < ApplicationController
 	end
 
 	def create
-		if current_problem.problem_id == params[:problem_id]
+		if current_problem.id == params[:problem_id].to_i
 			@solution = current_user.solutions.build(params.require(:solution).permit(:text))
-			current_problem.solutions.add(@solution)
+			@solution.problem = current_problem
 			@solution.save
+			redirect_to current_problem
 		else
 			flash[:danger] = "You can't submit solutions for this problem anymore"
 		end
-		redirect_to @problem
 	end
 end
