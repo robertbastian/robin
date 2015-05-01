@@ -9,17 +9,13 @@ class SolutionsController < ApplicationController
 	end
 
 	def create
-		@solution = current_user.solutions.build(solution_params)
-		@solution.save
-		@problem = Problem.find(params[:problem_id])
+		if current_problem.problem_id == params[:problem_id]
+			@solution = current_user.solutions.build(params.require(:solution).permit(:text))
+			current_problem.solutions.add(@solution)
+			@solution.save
+		else
+			flash[:danger] = "You can't submit solutions for this problem anymore"
+		end
 		redirect_to @problem
-	end
-
-	# Not sure if this is tidiest thing to do:
-	# Get the :text from the form for the solution, and then tack on the problem_id
-	# which is just floating around in params
-	private 
-	def solution_params
-		params.require(:solution).permit(:text).update(problem_id: params[:problem_id])
 	end
 end

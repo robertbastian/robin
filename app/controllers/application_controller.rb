@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   
   include SessionsHelper
   include ApplicationHelper
+  include ProblemHelper
 	
   before_action :check_login
 end
