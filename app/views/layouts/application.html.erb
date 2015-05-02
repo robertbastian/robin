@@ -12,14 +12,9 @@
 		<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 		<%= csrf_meta_tags %>
 
-		<!-- Skeleton -->
-		<link rel="stylesheet" href="../../assets/stylesheets/normalize.css">
- 		<link rel="stylesheet" href="../../assets/stylesheets/skeleton.css">
-		<link rel="stylesheet" href="../../assets/stylesheets/styles.css">
-
 		<!-- FONTS, FONT-AWESOME -->
-		<link href='http://fonts.googleapis.com/css?family=Oswald:400,300' rel='stylesheet' type='text/css'>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+		<link href='//fonts.googleapis.com/css?family=Oswald:400,300' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
 		<!-- ICO -->
 		<link rel="icon" type="image/png" href="images/favicon.ico">
@@ -31,16 +26,16 @@
     <div class="container">
       <div class="row">
         <div class="two columns">
-          <a href="#"><img src="images/robin_justbird_square.PNG" width="50px" /></a>
+          <a href="#"><%= image_tag "robin_justbird_square.PNG", width: '50px' %></a>
         </div>
         <nav class="ten columns">
           <ul>
             <% if logged_in? %>
-            <li><a href="#"><i class="fa fa-fw fa-home"></i></a></li>
+            <li><a href="dashboard"><i class="fa fa-fw fa-home"></i></a></li>
             <li><a href="#"><i class="fa fa-fw fa-bell"></i></a></li>
-            <li><a href="#"><i class="fa fa-fw fa-sign-in"></i></a></li>
+            <li><%= link_to '<i class="fa fa-fw fa-sign-out"></i>'.html_safe, logout_url, method: :post %></li>
             <% else %>
-            <li><a href="#"><i class="fa fa-fw fa-sign-out"></i></a></li>
+            <li><% link_to '<i class="fa fa-fw fa-sign-in">'.html_safe,login_url %></li>
             <% end %>
           </ul>
         </nav>
@@ -84,28 +79,24 @@ LEGACY - TO MERGE WITH ABOVE NAV BAR
 				</div>
 				</div>
 			</nav>
-			<% if flash[:notice] %>
-				<div class='alert alert-info'>
-					<%= flash[:notice] %>
-				</div>
-			<% end; if flash[:danger] %>
-				<div class="alert alert-danger">
-					<%= flash[:danger] %>
-				</div>
-			<% end %>
-			<%= yield %>
-		</div> 
-
-
 		-->
-
-
-	   <!--Footer -->
-    <section id="footer">
-      <div class="container"><div class="row">  
-        <!-- columns with social media links and copyrights and that shit here -->
-      </div></div>
+	<% if flash[:notice] %>
+		<div class='alert alert-info'>
+			<%= flash[:notice] %>
+		</div>
+	<% end; if flash[:danger] %>
+		<div class="alert alert-danger">
+			<%= flash[:danger] %>
+		</div>
+	<% end %>
+	<%= yield %>
+    <!--Footer -->
+	<section id="footer">
+		<div class="container">
+			<div class="row">  
+		        <!-- columns with social media links and copyrights and that shit here -->
+      		</div>
+    	</div>
     </section> 
-
-	</body>
+</body>
 </html>
