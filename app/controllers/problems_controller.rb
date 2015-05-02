@@ -14,18 +14,24 @@ class ProblemsController < ApplicationController
 	end
 
 	def create
-		@problem = current_user.problems.build(problem_params)
-		if @problem.save
-		# save returns a boolean that is true if problem is valid
-			redirect_to root_url
+		# Only the last winner can create a problem
+		if current_problem.winner == current_user
+			@problem = current_user.problems.build(problem_params)
+			if @problem.save
+			# save returns a boolean that is true if problem is valid
+				redirect_to root_url
+			else
+				flash[:danger] = @problem.errors.full_messages.first
+				render 'new'
+			end
 		else
-			flash[:danger] = @problem.errors.full_messages.first
-			render 'new'
+			flash[:danger] = 'You can\'t set a problem now'
+			redirect_to root_url
 		end
 	end
 
 	private
-		def problem_params
-			params.require(:problem).permit(:title, :text)
-		end
+	def problem_params
+		params.require(:problem).permit(:title, :text)
+	end
 end

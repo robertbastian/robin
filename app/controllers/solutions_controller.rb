@@ -1,7 +1,12 @@
 class SolutionsController < ApplicationController
 	def new
 		@problem = Problem.find(params[:problem_id])
-		@solution = Solution.new
+		if @problem == current_problem
+			@solution = Solution.new
+		else
+			flash[:danger] = "You can't submit solutions for this problem anymore"
+			redirect_to @problem
+		end
 	end
 
 	def show
@@ -9,17 +14,13 @@ class SolutionsController < ApplicationController
 	end
 
 	def create
-		@solution = current_user.solutions.build(solution_params)
-		@solution.save
-		@problem = Problem.find(params[:problem_id])
-		redirect_to @problem
-	end
-
-	private
-		# Not sure if this is tidiest thing to do:
-		# Get the :text from the form for the solution, and then tack on the problem_id
-		# which is just floating around in params
-		def solution_params
-			params.require(:solution).permit(:text).update(problem_id: params[:problem_id])
+		if current_problem.id == params[:problem_id].to_i
+			@solution = current_user.solutions.build(params.require(:solution).permit(:text))
+			@solution.problem = current_problem
+			@solution.save
+			redirect_to current_problem
+		else
+			flash[:danger] = "You can't submit solutions for this problem anymore"
 		end
+	end
 end
