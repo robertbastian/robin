@@ -7,8 +7,8 @@
 	</tr>
 	<% @solutions.each do |solution| %>
 		<tr>
-			<td><%= solution.text.truncate(50, separator: '\n') %></td>
-			<td><%=solution.points%></td>
+			<td><%= link_to solution.text.truncate(50, separator: '\n'), [solution.problem,solution] %></td>
+			<td><%= solution.score %></td>
 			<td><%= link_to solution.problem.title, solution.problem%></td></tr>
 
 	<% end %>

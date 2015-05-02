@@ -8,6 +8,6 @@
 <table class="table">
 	<tr><th>Title</th><th>Points</th></tr>
 	<% @problems.each do |problem| %>
-		<tr><td><%= link_to problem.title, problem %></td><td><%=problem.points%></td></tr>
+		<tr><td><%= link_to problem.title, problem %></td><td><%=problem.score%></td></tr>
 	<% end %>
 </table>

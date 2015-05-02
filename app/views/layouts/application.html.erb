@@ -17,8 +17,7 @@
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
 		<!-- ICO -->
-		<link rel="icon" type="image/png" href="images/favicon.ico">
-
+		<%= favicon_link_tag 'favicon.ico' %>
 </head>
 <body>
 
@@ -26,16 +25,18 @@
     <div class="container">
       <div class="row">
         <div class="two columns">
-          <a href="#"><%= image_tag "robin_justbird_square.PNG", width: '50px' %></a>
+          <a href="/"><%= image_tag "robin_justbird_square.PNG", width: '50px' %></a>
         </div>
         <nav class="ten columns">
           <ul>
             <% if logged_in? %>
-            <li><a href="dashboard"><i class="fa fa-fw fa-home"></i></a></li>
-            <li><a href="#"><i class="fa fa-fw fa-bell"></i></a></li>
-            <li><%= link_to '<i class="fa fa-fw fa-sign-out"></i>'.html_safe, logout_url, method: :post %></li>
+	            <li><%= link_to '<i class="fa fa-fw fa-trophy"></i>'.html_safe, users_url %></li>
+	            <li><%= link_to '<i class="fa fa-fw fa-archive"></i>'.html_safe, problems_url %></li>
+	            <li><%= link_to '<i class="fa fa-fw fa-bell"></i>'.html_safe, '#' %></li>
+	            <li><%= link_to '<i class="fa fa-fw fa-user"></i>'.html_safe, user_url(@current_user) %></li>
+	            <li><%= link_to '<i class="fa fa-fw fa-sign-out"></i>'.html_safe, logout_url, method: :post %></li>
             <% else %>
-            <li><% link_to '<i class="fa fa-fw fa-sign-in">'.html_safe,login_url %></li>
+	            <li><%= link_to '<i class="fa fa-fw fa-sign-in"></i> Log in'.html_safe, login_url %></li>
             <% end %>
           </ul>
         </nav>
@@ -43,60 +44,23 @@
     </div>
   </section>
 
-
-<!-- 
-
-LEGACY - TO MERGE WITH ABOVE NAV BAR
-
-		<div class="container">
-			<nav class="navbar navbar-inverse">
-				<div class="container-fluid">
-				<div class="navbar-header">
-				  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-				    <span class="sr-only">Toggle navigation</span>
-				    <span class="icon-bar"></span>
-				    <span class="icon-bar"></span>
-				    <span class="icon-bar"></span>
-				  </button>
-				  <a class="navbar-brand" href="/">Robin</a>
-				</div>
-				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				  <ul class="nav navbar-nav">
-				  	<% if logged_in? %>
-				    <li><a href="/dashboard">Dashboard <span class="sr-only">(current)</span></a></li>
-				    <li><%= link_to 'Leaderboard', users_url %></li>
-				    <li><%= link_to 'Archive', problems_url %></li>
-				    <% end %>
-				  </ul>
-				  <ul class="nav navbar-nav navbar-right">
-				    <% if logged_in? %>
-				    	<li><%= link_to @current_user.name, user_url(@current_user) %></li>
-				    	<li><%= link_to 'Logout', logout_url, method: :post %></li>
-				    <% else %>
-				    	<li><%= link_to 'Login', login_url %></li>
-				    <% end %>
-				  </ul>
-				</div>
-				</div>
-			</nav>
-		-->
 	<% if flash[:notice] %>
 		<div class='alert alert-info'>
 			<%= flash[:notice] %>
 		</div>
-	<% end; if flash[:danger] %>
+	<% elsif flash[:danger] %>
 		<div class="alert alert-danger">
 			<%= flash[:danger] %>
 		</div>
 	<% end %>
+
 	<%= yield %>
-    <!--Footer -->
-	<section id="footer">
-		<div class="container">
-			<div class="row">  
-		        <!-- columns with social media links and copyrights and that shit here -->
-      		</div>
-    	</div>
-    </section> 
+    
+  <%-#Footer %>
+  <section id="footer">
+    <div class="container"><div class="row">  
+      <%-# columns with social media links and copyrights and that shit here %>
+    </div></div>
+  </section> 
 </body>
 </html>

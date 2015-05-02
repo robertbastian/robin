@@ -1,5 +1,8 @@
+<%= if @problem == current_problem; '<code>active</code>'.html_safe else '' end%>
 <h1><%= @problem.title %></h1>
 <p><%= @problem.text %></p>
 
 <%= render "solutions/solutions_table" %>
+<% if @problem == current_problem %>
 <%= link_to 'Write solution', new_problem_solution_path(@problem) %>
+<% end %>

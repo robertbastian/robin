@@ -1,11 +1,3 @@
-<div class="jumbotron">
-  <h1>This is Robin!</h1>
-  <p>...</p>
-  <p><%= link_to 'Sign up', new_user_url, class: "btn btn-primary btn-lg", role: "button" %>
-  	 <%= link_to 'or Login', login_url, class: 'btn btn-link' %></p>
-</div>
-
-
 <div class="container">
     <div class="row">
       <div class="twelve columns centered">
@@ -44,16 +36,8 @@
       <div class="twelve columns centered">
         <h1>Join the party.</h1>
         <p>Start challenging others and challenge yourself. Discover the beauty of Robin.</p>
-        <button class="primary">Sign up</button>
-        <p>Already have an account? Login <a href="#">here</a>.
+        <%= link_to '<button class="primary">Sign up</button>'.html_safe, new_user_url %>
+        <p>Already have an account? Login <%= link_to 'here', login_url %>.
       </div>
     </div>
   </div>
-
-  <%-#Footer %>
-  <section id="footer">
-    <div class="container"><div class="row">  
-      <%-# columns with social media links and copyrights and that shit here %>
-    </div></div>
-  </section> 
-<%-# End Document %>

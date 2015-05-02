@@ -14,5 +14,5 @@
  *= require_self
  *= require normalize.css
  *= require skeleton.css
- *= require styles.css
+ *= require styles.scss
  */

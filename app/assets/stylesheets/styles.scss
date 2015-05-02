@@ -1,0 +1,50 @@
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 400;
+}
+h5,
+h6 {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 300;
+}
+nav ul {
+  padding-top: 15px;
+  position: absolute;
+  right: 0;
+}
+nav ul li {
+  display: inline;
+  padding: 0 10px 0 10px;
+}
+nav a {
+  text-decoration: none;
+  color: #3b3b3b;
+}
+.centered {
+  text-align: center;
+}
+#topbar {
+  background-color: #bbbbbb;
+  height: 4em;
+  margin-bottom: 1em;
+}
+#footer {
+  background-color: #bbbbbb;
+  height: 10em;
+  margin-top: 2em;
+}
+#splash {
+  background-image: image-url("splash.jpg");
+  background-size: cover;
+  height: 14em;
+  margin-bottom: 2em;
+}
+#logo-in-circle {
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  border: 5px black solid;
+  padding: 10px;
+}
