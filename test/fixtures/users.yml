@@ -4,14 +4,3 @@
 # test_name:
 #  key: value
 # to create a new set of sample data
-#
-robin: 
- name: Rob
- email: Rob@in
- password: Robin
- 
-fred:
- name: Fred
- email: Fred@in
- password: Frederick
- 
