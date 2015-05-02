@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20150501171819) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "points"
+    t.integer  "score"
     t.integer  "winner_id"
   end
 
@@ -27,11 +27,14 @@ ActiveRecord::Schema.define(version: 20150501171819) do
     t.text     "text"
     t.integer  "user_id"
     t.integer  "problem_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "points"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.integer  "score"
     t.string   "title"
+    t.boolean  "has_been_scored", default: false
   end
+
+  add_index "solutions", ["has_been_scored"], name: "index_solutions_on_has_been_scored"
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
