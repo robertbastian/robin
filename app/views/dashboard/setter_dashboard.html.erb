@@ -2,7 +2,7 @@
 
 <h1>Dashboard</h1>
 
-<h2><%= @most_recent_problem.title %></h2>
+<h2><%= link_to @most_recent_problem.title, problem_url(@most_recent_problem) %></h2>
 <p><%= @most_recent_problem.text %></p>
 
 <% @most_recent_problem.solutions.each do |s| %>
