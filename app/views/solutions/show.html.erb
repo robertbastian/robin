@@ -1,2 +1,4 @@
 <h1><%= @solution.title %></h1>
-<p><%= simple_format(@solution.text,{},sanitize: false) %></p>
+<pre><code><%= @solution.text.html_safe %></code></pre>
+<script>hljs.initHighlightingOnLoad();</script>
+
