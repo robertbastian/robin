@@ -1,9 +1,10 @@
 module ProblemHelper
-	def current_problem?
-		Problem.order(:created_at => :desc).first.expiry > DateTime.now
+	def active_problem?
+		ps = Problem.order(:created_at => :desc)
+		if ps.size == 0 then false else ps.first.expiry > DateTime.now
 	end
 
-	def current_problem
-		if current_problem? then Problem.order(:created_at => :desc).first else throw Exception end
+	def most_recent_problem
+		Problem.order(:created_at => :desc).first
 	end
 end
