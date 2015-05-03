@@ -1,4 +1,5 @@
-<h1>Problem: <%= @problem.title %></h1>
+<h4 style="margin-bottom:-15px"><small>Problem</small></h4>
+<h1><%= @problem.title %></h1>
 <% @is_most_recent = @problem == most_recent_problem %>
 <% if @is_most_recent && active_problem? %>
 	<span class="label label-success">Active</span>
@@ -9,12 +10,13 @@
 
 <h4><small>By: <%= @problem.author.name %></small></h4>
 
-Description: <p><%= @problem.text %></p>
+<div class='well'><%= @problem.text %></div>
 
 <% if @problem.winner_id %>
 	Winner:<p> <%= User.find(@problem.winner_id).name %> </p>
 <% end %>
 <% if !@is_most_recent || question_master? %>
+	<h4>Solutions</h4>
 	<%= @col = {:user => !@is_most_recent, :problem => false}; render "solutions/solutions_table" %>
 <% else %>
 	<h4> Solutions are hidden until problem is solved</h4>
