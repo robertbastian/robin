@@ -23,12 +23,11 @@ class SolutionsController < ApplicationController
 			@solution.problem = most_recent_problem
 			@solution.save
 			# all users submitted
-			if current_problem.solutions.length == User.size
-				current_problem.expiry = DateTime.now
+			if most_recent_problem.solutions.length == User.count
+				most_recent_problem.expiry = DateTime.now
 			end
 			flash[:notice] = 'Should now rate problem'
-			redirect_to most_recent_problem
-		else
 		end
+			redirect_to most_recent_problem
 	end
 end

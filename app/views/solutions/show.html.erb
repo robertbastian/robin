@@ -1,2 +1,2 @@
 <h1><%= @solution.title %></h1>
-<p><%= @solution.text %></p>
+<p><%= simple_format(@solution.text,{},sanitize: false) %></p>
