@@ -13,7 +13,7 @@ class ProblemsController < ApplicationController
 		if most_recent_problem.winner == current_user && !active_problem?
 			@problem = Problem.new
 		else
-			flash[:danger] = 'You shouldn\'t be here'
+			flash[:danger] = 'That\'s just not allowed'
 			redirect_to root_url
 		end
 	end
