@@ -10,7 +10,12 @@ class ProblemsController < ApplicationController
 	end
 
 	def new
-		@problem = Problem.new
+		if most_recent_problem.winner == current_user && !active_problem?
+			@problem = Problem.new
+		else
+			flash[:danger] = 'You shouldn\'t be here'
+			redirect_to root_url
+		end
 	end
 
 	def create
