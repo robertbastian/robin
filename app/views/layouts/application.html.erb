@@ -23,7 +23,8 @@
 	        <span class="icon-bar"></span>
 	      </button>
 		  <%= link_to image_tag('robin_justbird_square.PNG', style: "max-height:52px;margin-top:-15px;"), if logged_in? then '/dashboard' else '/' end, class: 'navbar-brand' %>
-	    </div>
+		  <%= link_to 'Robin', if logged_in? then '/dashboard' else '/' end, class: 'navbar-brand' %>
+	     </div>
 	    <div class="collapse navbar-collapse" id='nav'>
 	      <ul class="nav navbar-nav navbar-right">
 	        <% if logged_in? %>
