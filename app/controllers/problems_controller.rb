@@ -21,6 +21,7 @@ class ProblemsController < ApplicationController
 			redirect_to root_url
 		end
 	end
+
 	def edit
 		session[:return_to] ||= request.referer
 		@problem = Problem.find(params[:id])
@@ -28,11 +29,7 @@ class ProblemsController < ApplicationController
 			flash[:danger] = "You are not the problem's writer"
 			redirect_to session.delete(:return_to)
 		end
-		if @problem.solutions.empty? 
-  	    then @possible_winners = User.all
-  		else
-  			@possible_winners = @problem.solutions.map{|s| User.find(s.user)}.uniq
-  	  	end
+		@solutions = @problem.solutions
 	end
 
 	def create
@@ -47,9 +44,11 @@ class ProblemsController < ApplicationController
 			render 'new'
 		end
 	end
+
 	def update
 		@problem = Problem.find(params[:id])
-		if @problem.update(winner_id: params[:winner_id])
+		@winner = Solution.find(params.require(:winning_solution_id).to_i).user
+		if @problem.update(winner_id: @winner.id)
 			redirect_to @problem
 		else
 			render 'edit'

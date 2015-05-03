@@ -2,12 +2,16 @@
 
 <% if @problem.expiry < DateTime.now %>
 
-  	<%= form_for @problem, html: {method: :patch} do |f| %>
-
-      <%= f.label 'Choose a winner' %>
-      <%= select_tag(:winner_id,
-    	options_for_select(@possible_winners.map{|u| [u.name, u.id]})) %>
-      <%= f.submit %>
-    <% end %>
+	<%= form_for @problem, html: {method: :patch} do |f| %>
+		<% @solutions.each do |s| %>
+		<div class="radio">
+			<label>
+				<input name="winning_solution_id" type="radio" value="<%= s.id %>">
+				<%= s.text %>
+			</label>
+		</div>
+		<% end %>
+		<%= f.submit "Submit winner" %>
+	<% end %>
 
 <% end %>

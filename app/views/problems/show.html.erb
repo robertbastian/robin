@@ -1,24 +1,28 @@
 <h1>Problem: <%= @problem.title %></h1>
 <% @is_most_recent = @problem == most_recent_problem %>
 <% if @is_most_recent && active_problem? %>
-	<span class="label label-success">Active</span> Ends on <%= @problem.expiry.strftime("%d %b %Y, %H:%M")%>
+	<span class="label label-success">Active</span>
+	Ends on <%= @problem.expiry.strftime("%d %b %Y, %H:%M")%>
 <% else %>
 	Ended on <%= @problem.expiry.strftime("%d %b %Y, %H:%M")%>
 <% end %>
+
 <h4><small>By: <%= @problem.author.name %></small></h4>
 
-Instructions:<p><%= @problem.text %></p>
+Description: <p><%= @problem.text %></p>
+
 <% if @problem.winner_id %>
-  Winner:<p> <%= User.find(@problem.winner_id).name %> </p>
+	Winner:<p> <%= User.find(@problem.winner_id).name %> </p>
 <% end %>
 <% if !@is_most_recent || question_master? %>
-<%= @col = {:user => !@is_most_recent, :problem => false}; render "solutions/solutions_table" %>
+	<%= @col = {:user => !@is_most_recent, :problem => false}; render "solutions/solutions_table" %>
 <% else %>
-<h4> Solutions are hidden until problem is solved</h4>
+	<h4> Solutions are hidden until problem is solved</h4>
 <% end %>
+
 <% if @is_most_recent && active_problem? && !question_master? %>
-<%= link_to 'Write solution', new_problem_solution_path(@problem) %>
+	<%= link_to 'Write solution', new_problem_solution_path(@problem) %>
 <% elsif @is_most_recent && !active_problem? %>
 
-<%= link_to 'Grade this', edit_problem_path(@problem) %>
+	<%= link_to 'Grade this', edit_problem_path(@problem) %>
 <% end %>
