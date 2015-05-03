@@ -16,7 +16,7 @@ class ProblemsController < ApplicationController
 		else
 			flash[:danger] = 'That\'s just not allowed'
 			if !@mrp.winner flash[:danger] = "Last problem doesn't have a winner yet"
-			else flash[:danger] = 'You shouldn\'t be here'
+			else flash[:danger] = 'You\'re not the winner of the last problem'
 			end
 			redirect_to root_url
 		end
