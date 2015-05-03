@@ -24,7 +24,7 @@ class ProblemsController < ApplicationController
 	def edit
 		session[:return_to] ||= request.referer
 		@problem = Problem.find(params[:id])
-		if (current_user != @problem.user_id)
+		if (current_user.id != @problem.user_id)
 			flash[:danger] = "You are not the problem's writer"
 			redirect_to session.delete(:return_to)
 		end
@@ -38,7 +38,7 @@ class ProblemsController < ApplicationController
 	def create
 		# Only the last winner can create a problem
 		@problem = current_user.problems.build(problem_params)
-		@problem.expiry = 1.second.from_now #(params.permit(:time)[:time] || 3.days).from_now
+		@problem.expiry = (params.permit(:expiry)[:expiry].to_i.seconds || 3.days).from_now
 		if @problem.save
 		# save returns a boolean that is true if problem is valid
 			redirect_to root_url
@@ -49,7 +49,7 @@ class ProblemsController < ApplicationController
 	end
 	def update
 		@problem = Problem.find(params[:id])
-		if @problem.update(params.require(:problem).permit(:winner_id))
+		if @problem.update(winner_id: params[:winner_id])
 			redirect_to @problem
 		else
 			render 'edit'
