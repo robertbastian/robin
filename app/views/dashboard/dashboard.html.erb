@@ -1,7 +1,12 @@
 <div class="container">
 
 <h1>Dashboard</h1>
-<%= link_to 'View the current problem',  most_recent_problem %>
+<% if active_problem? %>
+	<h2><%= most_recent_problem.title %></h2>
+	<p><%= most_recent_problem.text %></p>
+<% else %>
+	No current problem
+<% end %>
 <br>
 <%= link_to 'Create a new problem', new_problem_url %>
 </div>
