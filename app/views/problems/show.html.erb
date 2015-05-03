@@ -19,7 +19,7 @@
 	<h4>Solutions</h4>
 	<%= @col = {:user => !@is_most_recent, :problem => false}; render "solutions/solutions_table" %>
 <% else %>
-	<h4> Solutions are hidden until problem is solved</h4>
+	<div class='alert alert-info'> Solutions are hidden until problem is solved</div>
 <% end %>
 
 <% if @is_most_recent && active_problem? && !question_master? %>
