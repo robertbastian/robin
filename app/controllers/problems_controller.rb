@@ -15,7 +15,7 @@ class ProblemsController < ApplicationController
 
 	def create
 		# Only the last winner can create a problem
-		if current_problem.winner == current_user
+		if most_recent_problem.winner == current_user
 			@problem = current_user.problems.build(problem_params)
 			@problem.expiry = (params[:time] || 3).days.from_now
 			if @problem.save
