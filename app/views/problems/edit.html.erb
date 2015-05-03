@@ -6,7 +6,7 @@
 
       <%= f.label 'Choose a winner' %>
       <%= select_tag(:winner_id,
-    	options_for_select(@possible_winners.map(|u| [u.name, u]))) %>
+    	options_for_select(@possible_winners.map{|u| [u.name, u.id]})) %>
       <%= f.submit %>
     <% end %>
 
