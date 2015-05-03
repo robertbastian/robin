@@ -1,3 +1,10 @@
+<div class="container">
+    <div class="row">
+      <div class="twelve columns">
+
+<h1>Create an account</h1>
+<p>Already have an account? <%= link_to "Click here to login", '/login' %>.
+
 <%= form_for @user, url: users_path do |f| %>
   <p>
     <%= f.label :name %>
@@ -20,6 +27,14 @@
   </p>
 
   <p>
+    <%= check_box_tag(:agree_to_tos) %>
+    I agree to the <a href='#'>Terms of Service</a>
+  </p>
+
+  <p>
     <%= f.submit %>
   </p>
 <% end %>
+</div>
+</div>
+</div>

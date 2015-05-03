@@ -1,11 +1,15 @@
+<div class="container"><div class="row"><div class="twelve columns">
+
+<h1>Create a new challenge</h1>
+
 <%= form_for @problem, html: { method: :post } do |f| %>
   <p>
-    <%= f.label :title %>
+    <%= f.label 'Challenge title:' %>
     <%= f.text_field :title %>
   </p>
 
   <p>
-    <%= f.label :text %>
+    <%= f.label 'Challenge description:' %>
     <%= f.text_area :text %>
   </p>
 
@@ -13,3 +17,5 @@
     <%= f.submit %>
   </p>
 <% end %>
+
+</div></div></div>

@@ -2,21 +2,12 @@
 <html>
 <head>
 	<title><%= @title || 'Robin' %></title>
-		<!-- Bootstrap, legacy
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-		-->
-
 		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-		<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 		<%= csrf_meta_tags %>
 
-		<!-- FONTS, FONT-AWESOME -->
 		<link href='//fonts.googleapis.com/css?family=Oswald:400,300' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
-		<!-- ICO -->
 		<%= favicon_link_tag 'favicon.ico' %>
 </head>
 <body>
@@ -31,12 +22,12 @@
           <ul>
             <% if logged_in? %>
 	            <li><%= link_to '<i class="fa fa-fw fa-trophy"></i>'.html_safe, users_url %></li>
-	            <li><%= link_to '<i class="fa fa-fw fa-archive"></i>'.html_safe, problems_url %></li>
-	            <li><%= link_to '<i class="fa fa-fw fa-bell"></i>'.html_safe, '#' %></li>
+	            <li><%= link_to '<i class="fa fa-fw fa-list-alt"></i>'.html_safe, problems_url %></li>
 	            <li><%= link_to '<i class="fa fa-fw fa-user"></i>'.html_safe, user_url(@current_user) %></li>
 	            <li><%= link_to '<i class="fa fa-fw fa-sign-out"></i>'.html_safe, logout_url, method: :post %></li>
             <% else %>
 	            <li><%= link_to '<i class="fa fa-fw fa-sign-in"></i> Log in'.html_safe, login_url %></li>
+	            <li><%= link_to '<i class="fa fa-fw fa-user-plus"></i> Sign up'.html_safe, '/users/new' %></li>
             <% end %>
           </ul>
         </nav>
@@ -56,10 +47,17 @@
 
 	<%= yield %>
     
-  <%-#Footer %>
   <section id="footer">
-    <div class="container"><div class="row">  
-      <%-# columns with social media links and copyrights and that shit here %>
+    <div class="container"><div class="row">
+	    <div class="twelve columns centered">
+	    	<br />
+	    	<p>
+	    	The <span class="smallcaps">ROBIN</span> application was developed by<br />
+	    	Robert Bastian · Paavan Buddhdev · Aiken Cairncross · James Dai · Alistair Gavin
+	    	<br /><br />
+	    	&lt;3
+	    	</p>
+	    </div>
     </div></div>
   </section> 
 </body>
