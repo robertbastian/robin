@@ -1,8 +1,17 @@
 <%= if @problem == most_recent_problem && active_problem?; '<code>active</code>'.html_safe else '' end%>
-<h1><%= @problem.title %></h1>
-<p><%= @problem.text %></p>
-
+<h1>
+	Problem: <%= @problem.title %><br>
+	<small>By: <%= @problem.author.name %></small>
+</h1>
+Ends on <%= @problem.expiry.strftime("%d %b %Y, %H:%M") %><br><br>
+Instructions:<p><%= @problem.text %></p>
+<% if most_recent_problem != @problem || (question_master? && @problem == most_recent_problem) %>
 <%= render "solutions/solutions_table" %>
-<% if @problem == most_recent_problem && active_problem? %>
+<% else %>
+<h4> Solutions are hidden until problem is solved</h4>
+<% end %>
+<% if @problem == most_recent_problem && active_problem? && !question_master? %>
 <%= link_to 'Write solution', new_problem_solution_path(@problem) %>
+<% elsif @problem = most_recent_problem && !active_problem? %>
+Grade this
 <% end %>
