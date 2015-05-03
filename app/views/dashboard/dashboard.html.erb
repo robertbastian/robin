@@ -3,7 +3,7 @@
 <h1>Dashboard</h1>
 <% if active_problem? %>
 	<h2><%= link_to @most_recent_problem.title, problem_url(@most_recent_problem) %></h2>
-	<p><%= most_recent_problem.text %></p>
+	<p><%= @most_recent_problem.text %></p>
 <% else %>
 	<p>No current problem</p>
 <% end %>

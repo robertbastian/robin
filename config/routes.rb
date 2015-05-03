@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   # /problems/:id
   # /problems/:problem_id/solutions
   # Run 'bin/rake routes' for details
-  resources :problems, only: [:index, :new, :create, :show] do
+  resources :problems, only: [:index, :new, :create, :show, :edit, :update] do
     resources :solutions, only: [:index, :new, :create, :show]
   end
 end
