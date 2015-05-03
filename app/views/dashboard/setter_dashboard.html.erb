@@ -1,0 +1,14 @@
+<div class="container">
+
+<h1>Dashboard</h1>
+
+<h2><%= @most_recent_problem.title %></h2>
+<p><%= @most_recent_problem.text %></p>
+
+<% @most_recent_problem.solutions.each do |s| %>
+	<h3>Solution by: <%= s.user.name %></h3>
+	<p><%= s.text %></p>
+<% end %>
+
+<p><%= link_to 'Create a new problem', new_problem_url %></p>
+</div>

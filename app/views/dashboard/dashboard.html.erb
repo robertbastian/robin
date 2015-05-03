@@ -5,8 +5,7 @@
 	<h2><%= most_recent_problem.title %></h2>
 	<p><%= most_recent_problem.text %></p>
 <% else %>
-	No current problem
+	<p>No current problem</p>
 <% end %>
-<br>
-<%= link_to 'Create a new problem', new_problem_url %>
+<p><%= link_to 'Create a new problem', new_problem_url %></p>
 </div>
