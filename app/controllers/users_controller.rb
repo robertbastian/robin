@@ -7,8 +7,6 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find_by_name(params[:id])
-		@problems = @user.problems
-		@solutions = @user.solutions
 		@me = @user == @current_user
 	end
 

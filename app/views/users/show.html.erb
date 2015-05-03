@@ -1,17 +1,11 @@
-<div class="container">
+<h1>
+	<%= @user.name %>
+	<small><%= @user.score %> Points</small>
+</h1>
 
-<h1><%= @user.name %>
-<small><%= @user.score %> Points</small></h1>
-
-<%= render 'solutions/solutions_table' %>
+<h2>Solutions</h2>
+<%= @solutions = @user.solutions; render 'solutions/solutions_table' %>
 
 
 <h2>Problems</h2>
-<table class="table">
-	<tr><th>Title</th><th>Points</th></tr>
-	<% @problems.each do |problem| %>
-		<tr><td><%= link_to problem.title, problem %></td><td><%=problem.score%></td></tr>
-	<% end %>
-</table>
-
-</div>
+<% @problems = @user.problems; render 'problems/problems_table' %>

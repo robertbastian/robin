@@ -1,0 +1,16 @@
+<table class="table">
+	<tr>
+		<th>Title</th>
+		<th>Set by</th>
+		<th>Start time</th>
+		<th>End time</th>
+	</tr>
+	<% @problems.each do |problem| %>
+		<tr>
+			<td><%= link_to problem.title, problem %></td>
+			<td><%= link_to problem.author.name, problem.author %></td>
+			<td><%= problem.created_at.strftime("%d %b %Y, %H:%M") %></td>
+			<td><%= problem.expiry.strftime("%d %b %Y, %H:%M")  %></td>
+		</tr>
+	<% end %>
+</table>
