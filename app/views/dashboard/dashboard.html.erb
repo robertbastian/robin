@@ -1,11 +1,20 @@
-<div class="container">
-
+<% @title = 'Dashboard | Robin' %>
 <h1>Dashboard</h1>
 <% if active_problem? %>
-	<h2><%= link_to @most_recent_problem.title, problem_url(@most_recent_problem) %></h2>
-	<p><%= @most_recent_problem.text %></p>
+	<div class="panel panel-default">
+	  <div class="panel-heading">
+	    <h3 class="panel-title">Current problem: <%= link_to most_recent_problem.title, problem_url(most_recent_problem) %></h3>
+	  </div>
+	  <div class="panel-body">
+	    <%= @most_recent_problem.text %>
+	  </div>
+	  <div class="panel-footer">
+	  	<%= link_to 'Write solution', new_problem_solution_path(most_recent_problem) %>
+	  </div>
+
+	</div>
 <% else %>
 	<p>No current problem</p>
+	<p><%= link_to 'Create a new problem', new_problem_url %></p>
 <% end %>
-<p><%= link_to 'Create a new problem', new_problem_url %></p>
 </div>

@@ -1,9 +1,11 @@
-<%= if @problem == most_recent_problem && active_problem?; '<code>active</code>'.html_safe else '' end%>
-<h1>
-	Problem: <%= @problem.title %><br>
-	<small>By: <%= @problem.author.name %></small>
-</h1>
-Ends on <%= @problem.expiry.strftime("%d %b %Y, %H:%M") %><br><br>
+<h1>Problem: <%= @problem.title %></h1>
+<% if @problem == most_recent_problem && active_problem? %>
+	<span class="label label-success">Active</span> Ends on <%= @problem.expiry.strftime("%d %b %Y, %H:%M")%>
+<% else %>
+	Ended on <%= @problem.expiry.strftime("%d %b %Y, %H:%M")%>
+<% end %>
+<h4><small>By: <%= @problem.author.name %></small></h4>
+
 Instructions:<p><%= @problem.text %></p>
 <% if @problem.winner_id %>
   Winner:<p> <%= User.find(@problem.winner_id).name %> </p>
