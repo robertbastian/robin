@@ -6,9 +6,7 @@
 		<%= csrf_meta_tags %>
 		<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>		
 
-
-		<!-- <link href='//fonts.googleapis.com/css?family=Oswald:400,300' rel='stylesheet' type='text/css'>
-		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"> -->
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
  
 		<%= favicon_link_tag 'favicon.ico' %>
 </head>
@@ -41,8 +39,12 @@
 		          </ul>
 		        </li>
 		    <% else %>
-		        <%= link_to 'Log in', login_url, class: 'btn btn-default navbar-btn' %>
-		        <%= link_to 'Sign up', '/users/new', class: 'btn btn-default navbar-btn' %>
+		        <%= link_to(login_url, :class => 'btn btn-default navbar-btn') do %> 
+		        	Log in <i class="fa fa-fw fa-sign-in"></i>
+		        <% end %>
+		        <%= link_to('/users/new', :class => 'btn btn-default navbar-btn') do %>
+		        	Sign up <i class="fa fa-fw fa-user-plus"></i>
+		        <% end %>
 		    <% end %>
 	      </ul>
 	    </div><!-- /.navbar-collapse -->
