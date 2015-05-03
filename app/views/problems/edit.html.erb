@@ -1,0 +1,13 @@
+<h1> Editing/Marking problem </h1>
+
+<% if @problem.expiry < DateTime.now %>
+
+  	<%= form_for @problem, html: {method: :patch} do |f| %>
+
+      <%= f.label 'Choose a winner' %>
+      <%= select_tag(:winner_id,
+    	options_for_select(@possible_winners.map(|u| [u.name, u]))) %>
+      <%= f.submit %>
+    <% end %>
+
+<% end %>

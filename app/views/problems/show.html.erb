@@ -13,5 +13,6 @@ Instructions:<p><%= @problem.text %></p>
 <% if @problem == most_recent_problem && active_problem? && !question_master? %>
 <%= link_to 'Write solution', new_problem_solution_path(@problem) %>
 <% elsif @problem = most_recent_problem && !active_problem? %>
-Grade this
+
+<%= link_to 'Grade this', edit_problem_path(@problem) %>
 <% end %>
