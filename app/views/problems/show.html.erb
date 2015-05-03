@@ -11,7 +11,7 @@ Instructions:<p><%= @problem.text %></p>
   Winner:<p> <%= User.find(@problem.winner_id).name %> </p>
 <% end %>
 <% if most_recent_problem != @problem || (question_master? && @problem == most_recent_problem) %>
-<%= render "solutions/solutions_table" %>
+<%= @col = {:user => true, :problem => false}; render "solutions/solutions_table" %>
 <% else %>
 <h4> Solutions are hidden until problem is solved</h4>
 <% end %>

@@ -2,13 +2,22 @@
 	<tr>
 		<th>Description</th>
 		<th>Points</th>
-		<th>Problem</th>
+		<% if @col[:user] %>
+			<th>User</th>
+		<% end; if @col[:problem] %>
+			<th>Problem</th>
+		<% end %>
 	</tr>
 	<% @solutions.each do |solution| %>
 		<tr>
 			<td><%= link_to solution.text.truncate(50, separator: '\n'), [solution.problem,solution] %></td>
 			<td><%= solution.score %></td>
-			<td><%= link_to solution.problem.title, solution.problem%></td></tr>
+			<% if @col[:user] %>
+				<td><%=link_to solution.user.name, solution.user%></td>
+			<% end; if @col[:problem] %>
+				<td><%= link_to solution.problem.title, solution.problem %></td>
+			<% end %>
+		</tr>
 
 	<% end %>
 </table>

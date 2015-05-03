@@ -4,7 +4,7 @@
 </h1>
 
 <h2>Solutions</h2>
-<%= @solutions = @user.solutions; render 'solutions/solutions_table' %>
+<%= @solutions = @user.solutions; @col = {:user => false, :problem => true}; render 'solutions/solutions_table' %>
 
 
 <h2>Problems</h2>
