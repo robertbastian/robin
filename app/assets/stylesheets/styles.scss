@@ -31,10 +31,13 @@ nav a {
   height: 4em;
   margin-bottom: 1em;
 }
-#footer {
+footer {
   background-color: #bbbbbb;
   height: 10em;
   margin-top: 2em;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 #splash {
   background-image: image-url("splash.jpg");
