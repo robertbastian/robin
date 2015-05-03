@@ -17,6 +17,7 @@ class ProblemsController < ApplicationController
 		# Only the last winner can create a problem
 		if current_problem.winner == current_user
 			@problem = current_user.problems.build(problem_params)
+			@problem.expiry = (params[:time] || 3).days.from_now
 			if @problem.save
 			# save returns a boolean that is true if problem is valid
 				redirect_to root_url

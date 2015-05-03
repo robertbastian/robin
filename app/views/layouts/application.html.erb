@@ -22,10 +22,10 @@
         <nav class="ten columns">
           <ul>
             <% if logged_in? %>
-	            <li><%= link_to '<i class="fa fa-fw fa-trophy"></i>'.html_safe, users_url %></li>
-	            <li><%= link_to '<i class="fa fa-fw fa-list-alt"></i>'.html_safe, problems_url %></li>
-	            <li><%= link_to '<i class="fa fa-fw fa-user"></i>'.html_safe, user_url(@current_user) %></li>
-	            <li><%= link_to '<i class="fa fa-fw fa-sign-out"></i>'.html_safe, logout_url, method: :post %></li>
+	            <li><%= link_to '<i class="fa fa-fw fa-trophy"></i>'.html_safe, users_url, title: 'Leaderboard' %></li>
+	            <li><%= link_to '<i class="fa fa-fw fa-list-alt"></i>'.html_safe, problems_url, title: 'Archive' %></li>
+	            <li><%= link_to '<i class="fa fa-fw fa-user"></i>'.html_safe, user_url(@current_user), title: 'Profile' %></li>
+	            <li><%= link_to '<i class="fa fa-fw fa-sign-out"></i>'.html_safe, logout_url, method: :post, title: 'Logout' %></li>
             <% else %>
 	            <li><%= link_to '<i class="fa fa-fw fa-sign-in"></i> Log in'.html_safe, login_url %></li>
 	            <li><%= link_to '<i class="fa fa-fw fa-user-plus"></i> Sign up'.html_safe, '/users/new' %></li>
