@@ -14,5 +14,5 @@
  *= require_self
  *= require bootstrap.min.css
  *= require styles.scss
- *= require highlight.css
+ *= require highlight/agate.css
  */
