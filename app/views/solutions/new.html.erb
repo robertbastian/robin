@@ -1,7 +1,7 @@
 <div class="container">
 <%= form_for @solution, url: problem_solutions_path, html: { method: :post } do |f| %>
 	<h1><%= @problem.title %></h1>
-	<p><%= @problem.text %></p>
+	<div class='well'><p><%= @problem.text.html_safe %></p></div>
 	<p>Problem set by <%= @problem.author.name %></p>
 
 	<p>
