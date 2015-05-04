@@ -16,7 +16,8 @@
 	<h4>Solutions</h4>
 	<%= @col = {:user => !@is_most_recent, :problem => false}; render "solutions/solutions_table" %>
 <% else %>
-	<div class='alert alert-info'> Solutions are hidden until problem is solved</div>
+	<%= @solutions = @solutions.select { |x| x.author == current_user }; @col = {:user => false, :problem => false}; render 'solutions/solutions_table' %>
+	<div class='alert alert-info'> Other solutions are hidden until problem is solved</div>
 <% end %>
 
 <% if @is_most_recent && active_problem? && !question_master? %>
