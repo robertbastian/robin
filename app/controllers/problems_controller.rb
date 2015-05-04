@@ -55,8 +55,23 @@ class ProblemsController < ApplicationController
         end
     end
 
-    private
-    def problem_params
-        params.require(:problem).permit(:title, :text)
-    end
+	def update
+		@problem = Problem.find(params[:id])
+
+		@solutions = @problem.solutions
+
+		@solutions.each do |s|
+			# s.id.to_s is the solution's id converted to string
+			# The name of the field are s_<s.id> so catenate 's_' to s.id.to_s
+			# Apologies for the confusing names
+			s.increment!(:score, params.require('s_' + s.id.to_s).to_i)
+		end
+
+		redirect_to @problem
+	end
+
+	private
+	def problem_params
+		params.require(:problem).permit(:title, :text)
+	end
 end
