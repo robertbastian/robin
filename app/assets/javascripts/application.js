@@ -16,3 +16,7 @@
 //= require_tree .
 //= require bootstrap.min.js
 //= require highlight.pack.js
+
+$(document).ready(function(){
+	hljs.initHighlightingOnLoad()
+})
