@@ -1,3 +1,4 @@
+<div class="container">
 <h1>
 	<%= @user.name %>
 	<small><%= @user.score %> Points</small>
@@ -9,3 +10,4 @@
 
 <h2>Problems</h2>
 <%= @problems = @user.problems; render 'problems/problems_table' %>
+</div>
