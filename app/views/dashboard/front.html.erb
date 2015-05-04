@@ -1,43 +1,31 @@
-<div class="container">
-    <div class="row">
-      <div class="twelve columns centered">
-        <h1>Welcome to Robin.</h1>
-        <%= image_tag "robin_justbird_square.PNG", id: "logo-in-circle", width: "150", height:"150" %>
-        <h4>Robin allows friends, colleagues, or even mortal enemies to challenge each other.</h3>
-          <p>
-        </p>
-      </div>
+  <div class="row">
+    <div class="col-md-12 centered">
+      <h1>Welcome to Robin.</h1>
+      <%= image_tag "robin_justbird_square.PNG", id: "logo-in-circle", width: "150", height:"150" %>
+      <h4>Robin allows friends, colleagues, or even mortal enemies to challenge each other.</h4>
     </div>
   </div>
-  
-  <section id="splash">
-    <div class="container">
-      <div class="row">
-        <div class="twelve columns centered" id="splash-image">
-        </div>
-      </div>
+</div>
+  <div id="splash" class="img-responsive">
+  </div>
+<div class="container-fluid">
+
+  <div class="row">
+    <div class="col-md-12 centered">
+      <p>
+         A round-robin tournament is set up, and each participant can add their own challenges. After the deadline for each challenge, the setter compares the solutions and gives each a rating, but moreover, <em>each participant rates the challenge that was set</em>.<br />
+      <br />
+        Thus Robin improves your programming not only by encouraging you to write good answers, but to write good questions as well.
+      </p>
     </div>
-  </section>
-  
-  <div class="container">
-    <div class="row">
-      <div class="twelve columns centered">
-        <p>
-           A round-robin tournament is set up, and each participant can add their own challenges. After the deadline for each challenge, the setter compares the solutions and gives each a rating, but moreover, <em>each participant rates the challenge that was set</em>.<br />
-        </p>
-        <hp>
-          Thus Robin improves your programming not only by encouraging you to write good answers, but to write good questions as well.
-        </p>
-      </div>
-    </div>
-    
-    <hr />
-    <div class="row">
-      <div class="twelve columns centered">
-        <h1>Join the party.</h1>
-        <p>Start challenging others and challenge yourself. Discover the beauty of Robin.</p>
-        <%= link_to '<button class="btn btn-primary btn-lg">Sign up</button>'.html_safe, new_user_url %><br /><br />
-        <p>Already have an account? Login <%= link_to 'here', login_url %>.
-      </div>
+  </div>
+
+  <hr />
+  <div class="row">
+    <div class="col-md-12 centered">
+      <h1>Join the party.</h1>
+      <p>Start challenging others and challenge yourself. Discover the beauty of Robin.</p>
+      <%= link_to '<button class="btn btn-primary btn-lg">Sign up</button>'.html_safe, new_user_url %><br /><br />
+      <p>Already have an account? Login <%= link_to 'here', login_url %>. </p>
     </div>
   </div>
