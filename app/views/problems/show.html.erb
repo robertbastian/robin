@@ -15,7 +15,7 @@
 <% if @problem.winner_id %>
 	Winner:<p> <%= User.find(@problem.winner_id).name %> </p>
 <% end %>
-<% if !@is_most_recent || question_master? %>
+<% if !@is_most_recent || !active_problem? || question_master? %>
 	<h4>Solutions</h4>
 	<%= @col = {:user => !@is_most_recent, :problem => false}; render "solutions/solutions_table" %>
 <% else %>
