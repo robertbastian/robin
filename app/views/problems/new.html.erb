@@ -1,26 +1,36 @@
-<div class="container"><div class="row"><div class="twelve columns">
+<div class="container">
 
 <h1>Create a new challenge</h1>
-
+<br>
 <%= form_for @problem, html: { method: :post } do |f| %>
-  <p>
+  <div class="form-group">
     <%= f.label 'Challenge title:' %>
-    <%= f.text_field :title %>
-  </p>
+    <%= f.text_field :title, class: 'form-control'%>
+  </div>
 
-  <p>
-    <%= f.label 'Challenge description:' %>
-    <%= f.text_area :text %>
-  </p>
+  <div class="form-group">
+    <%= f.label 'Instructions:' %>
+    <%= f.text_area :text, :placeholder => 'Provide a detailed description of your challenge', class: 'form-control',rows: 7, id: 'text'%>
+    <p class="help-block">You can use <a href="https://help.github.com/articles/markdown-basics/">GitHub Flavored Markdown</a></p>
+  </div>
 
-  <p>
-    <%= f.label 'Time to solve:' %>
-    
-    <%= select_tag(:expiry, options_for_select(
-      (if devmode? then [['1 second', 1], ['1 minute', 1.minute], ['5 minutes', 5.minutes]] else [] end) + [['1 day', 1.days], ['3 days', 3.days], ['1 week', 7.days]])) %>
-  <p>
-    <%= f.submit %>
-  </p>
+  <%= f.label 'Time to solve:' %>
+  <div class="row">
+    <div class="form-group col-sm-6">      
+      <%= select_tag(:expiry, options_for_select(
+        (if devmode? then [['1 second', 1], ['1 minute', 1.minute], ['5 minutes', 5.minutes]] else [] end) + [['1 day', 1.days], ['3 days', 3.days], ['1 week', 7.days]]),:class => 'form-control') %>
+    </div>
+    <div class="col-sm-6">
+      <%= f.submit class: 'btn btn-primary btn-block' %>
+    </div>
+  </div>
 <% end %>
-
-</div></div></div>
+<br><br>
+<h5>
+  Preview 
+  <a href='#' id='reload'>
+    <i class="fa fa-refresh"></i>
+  </a>
+</h5>
+<div class="well" style="min-height:70px"></div>
+</div>
