@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150503143754) do
+ActiveRecord::Schema.define(version: 20150504141443) do
 
   create_table "problems", force: :cascade do |t|
     t.string   "title"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20150503143754) do
     t.integer  "score"
     t.string   "title"
     t.boolean  "has_been_scored", default: false
+    t.string   "language"
   end
 
   add_index "solutions", ["has_been_scored"], name: "index_solutions_on_has_been_scored"

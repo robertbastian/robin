@@ -17,4 +17,4 @@
 //= require bootstrap.min.js
 //= require highlight.pack.js
 
-hljs.initHighlightingOnLoad()
+hljs.initHighlightingOnLoad();
