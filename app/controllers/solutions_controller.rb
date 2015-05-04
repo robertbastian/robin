@@ -22,7 +22,6 @@ class SolutionsController < ApplicationController
 			@solution = current_user.solutions.build(params.require(:solution).permit(:text))
 			@solution.problem = most_recent_problem
 			@solution.save
-			byebug
 			@solution.problem.update(:score => @solution.problem.score + params[:like].to_i)
 			# all users submitted
 			if most_recent_problem.solutions.length == User.count

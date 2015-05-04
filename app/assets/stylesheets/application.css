@@ -13,7 +13,7 @@
  *  require_tree .
  *= require_self
  *= require bootstrap.min.css
- *= require styles.scss
  *= require bootstrap-slider.css
+ *= require styles.scss
  */
 
