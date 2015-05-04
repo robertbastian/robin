@@ -1,3 +1,4 @@
+<div class="container">
 <%= form_for @solution, url: problem_solutions_path, html: { method: :post } do |f| %>
 	<h1><%= @problem.title %></h1>
 	<p><%= @problem.text %></p>
@@ -12,3 +13,4 @@
 		<%= f.submit %>
 	</p>
 <% end %>
+</div>

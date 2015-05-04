@@ -1,3 +1,4 @@
+<div class="container">
 <h1>Dashboard</h1>
 
 <h2><%= link_to @most_recent_problem.title, problem_url(@most_recent_problem) %></h2>
@@ -7,3 +8,4 @@
 	<h3>Solution by: <%= s.user.name %></h3>
 	<p><%= s.text %></p>
 <% end %>
+</div>

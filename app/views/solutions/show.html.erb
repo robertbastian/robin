@@ -2,4 +2,4 @@
 <h4 style="margin-bottom:-15px"><small>Solution</small></h4>
 <h1> <%= @solution.created_at.strftime("%d %b %Y, %H:%M")%></h1>
 <% if @solution.problem.expiry < DateTime.now %><h4><small>Author: <%= link_to @solution.user.name, @solution.user %>, Language: <%= @solution.language %> </small></h4><% end %>
-<pre style='background-color:#333'><code><%= @solution.text %></code></pre>
+<pre style='background-color:#333'><code><%= @solution.text %></code></pre></div>
