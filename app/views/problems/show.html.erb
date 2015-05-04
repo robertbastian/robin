@@ -1,4 +1,4 @@
-<h4 style="margin-bottom:-15px"><small>Problem</small></h4>
+<div class='container'><h4 style="margin-bottom:-15px"><small>Problem</small></h4>
 <h1><%= @problem.title %></h1>
 <% @is_most_recent = @problem == most_recent_problem %>
 <% if @is_most_recent && active_problem? %>
@@ -10,7 +10,7 @@
 
 <h4><small>By: <%= @problem.author.name %></small></h4>
 
-<div class='well'><%= @problem.text %></div>
+<div class='well'><%= @problem.text.html_safe %></div>
 
 <% if !@is_most_recent || !active_problem? || question_master? %>
 	<h4>Solutions</h4>
@@ -23,10 +23,10 @@
 	<%= link_to 'Write solution', new_problem_solution_path(@problem) %>
 <% elsif @is_most_recent && !active_problem? %>
 
-	<%= link_to 'Grade this', edit_problem_path(@problem) %>
-<% end %>
+<div class='text-center'>	<%= link_to 'Grade this', edit_problem_path(@problem), class: 'btn btn-lg btn-info btn-block' %>
+</div><% end %>
 
 
 <% if @problem.winner_id %>
-	<div class='alert alert-success'><strong>Winner:</strong><%= User.find(@problem.winner_id).name %></div>
-<% end %>
+	<div class='alert alert-success'>Winner: <%= link_to @problem.winner.name, @problem.winner, class: 'alert-link' %></div>
+<% end %></div>

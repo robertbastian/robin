@@ -6,7 +6,7 @@
 	    <h3 class="panel-title">Current problem: <%= link_to most_recent_problem.title, problem_url(most_recent_problem) %></h3>
 	  </div>
 	  <div class="panel-body">
-	    <%= @most_recent_problem.text %>
+	    <%= @most_recent_problem.text.html_safe %>
 	  </div>
 	  <div class="panel-footer">
 	  	<%= link_to 'Write solution', new_problem_solution_path(most_recent_problem) %>
