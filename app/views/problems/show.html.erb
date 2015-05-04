@@ -12,9 +12,6 @@
 
 <div class='well'><%= @problem.text %></div>
 
-<% if @problem.winner_id %>
-	Winner:<p> <%= User.find(@problem.winner_id).name %> </p>
-<% end %>
 <% if !@is_most_recent || !active_problem? || question_master? %>
 	<h4>Solutions</h4>
 	<%= @col = {:user => !@is_most_recent, :problem => false}; render "solutions/solutions_table" %>
@@ -27,4 +24,9 @@
 <% elsif @is_most_recent && !active_problem? %>
 
 	<%= link_to 'Grade this', edit_problem_path(@problem) %>
+<% end %>
+
+
+<% if @problem.winner_id %>
+	<div class='alert alert-success'><strong>Winner:</strong><%= User.find(@problem.winner_id).name %></div>
 <% end %>
