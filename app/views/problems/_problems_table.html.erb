@@ -4,6 +4,7 @@
 		<th>Set by</th>
 		<th>Start time</th>
 		<th>End time</th>
+		<th>Points</th>
 	</tr>
 	<% @problems.each do |problem| %>
 		<tr>
@@ -11,6 +12,7 @@
 			<td><%= link_to problem.author.name, problem.author %></td>
 			<td><%= problem.created_at.strftime("%d %b %Y, %H:%M") %></td>
 			<td><%= problem.expiry.strftime("%d %b %Y, %H:%M")  %></td>
+			<td><%= problem.score %></td>
 		</tr>
 	<% end %>
 </table>

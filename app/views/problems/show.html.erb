@@ -1,33 +1,61 @@
-<div class='container'><h4 style="margin-bottom:-15px"><small>Problem</small></h4>
-<h1><%= @problem.title %></h1>
-<% @is_most_recent = @problem == most_recent_problem %>
-<% if @is_most_recent && active_problem? %>
-	<span class="label label-success">Active</span>
-	Ends on <%= @problem.expiry.strftime("%d %b %Y, %H:%M")%>
-<% else %>
-	Ended on <%= @problem.expiry.strftime("%d %b %Y, %H:%M")%>
-<% end %>
+<div class='container'>
 
-<h4><small>By: <%= @problem.author.name %></small></h4>
+	<h4 style="margin-bottom:-15px"><small>
+		Problem
+	</small></h4>
 
-<div class='well'><%= @problem.text.html_safe %></div>
+	<h1>
+		<%= @problem.title %>
+	</h1>
 
-<% if !@is_most_recent || !active_problem? || question_master? %>
-	<h4>Solutions</h4>
-	<%= @col = {:user => !@is_most_recent, :problem => false}; render "solutions/solutions_table" %>
-<% else %>
-	<%= @solutions = @solutions.select { |x| x.author == current_user }; @col = {:user => false, :problem => false}; render 'solutions/solutions_table' %>
-	<div class='alert alert-info'> Other solutions are hidden until problem is solved</div>
-<% end %>
+	<% if @is_most_recent && active_problem? %>
+		<span class="label label-success">Active</span>
+		Ends on <%= @problem.expiry.strftime("%d %b %Y, %H:%M")%>
+	<% else %>
+		Ended on <%= @problem.expiry.strftime("%d %b %Y, %H:%M")%>
+	<% end %>
 
-<% if @is_most_recent && active_problem? && !question_master? %>
-	<%= link_to 'Write solution', new_problem_solution_path(@problem) %>
-<% elsif @is_most_recent && !active_problem? %>
+	<h4><small>
+		By: <%= @problem.author.name %>
+	</small></h4>
 
-<div class='text-center'>	<%= link_to 'Grade this', edit_problem_path(@problem), class: 'btn btn-lg btn-info btn-block' %>
-</div><% end %>
+	<% if @problem.winner_id %>
+		<div class='alert alert-success'>
+			Winner: <%= link_to @problem.winner.name, @problem.winner, class: 'alert-link' %>
+		</div>
+	<% end %>
 
+	<div class='well'><%= @problem.text.html_safe %></div>
 
-<% if @problem.winner_id %>
-	<div class='alert alert-success'>Winner: <%= link_to @problem.winner.name, @problem.winner, class: 'alert-link' %></div>
-<% end %></div>
+	<% # Which solutions should be shown? %>
+	<% if !@is_most_recent || question_master? %>
+		<% # This is an old problem or this is the current problem and you are the question master %>
+		<h4>Solutions</h4>
+		<%= @col = {:user => !@is_most_recent, :problem => false}; render "solutions/solutions_table" %>
+	<% elsif  @my_solution.size > 0 %>
+		<% # This is the current problem and you have submitted a solution %>
+		<h4>Your solution</h4>
+		<%= @solutions = @my_solution; @col = {:user => false, :problem => false}; render 'solutions/solutions_table' %>
+		<div class='alert alert-info'> Other users' solutions are hidden until the problem is solved.</div>
+	<% elsif active_problem? %>
+		<% # This is the current problem, still active, and you haven't submitted a solution %>
+		<%= form_for Solution.new, url: problem_solutions_path(@problem), html: { method: :post } do |f| %>
+				<div class="form-group">
+					<%= f.text_area :text, placeholder: "Enter your solution", class: 'form-control', rows: 6 %>
+				</div>
+				<div class="row">
+					<div class="col-sm-3 form-group">
+						<%= f.label 'How did you like this problem?' %>
+					</div>
+					<div class="col-sm-5 form-group">
+						Not so much 
+						<input type="text" id='like' value="" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="75" data-slider-orientation="horizontal" data-slider-selection="before" data-slider-tooltip="hide"> 
+						A lot
+					</div>
+					<div class="col-sm-4 form-group text-right">
+						<%= f.submit 'Submit solution', class: 'btn btn-primary btn-block' %>
+					</div>
+				</div>
+		<% end %>
+	<% end %>
+</div>

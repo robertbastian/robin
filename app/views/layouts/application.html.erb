@@ -8,12 +8,6 @@
 		<% if @highlight %>
 			<%= stylesheet_link_tag "highlight/agate", media: "all" %>
 			<%= javascript_include_tag "highlight.pack" %>
-			<script>$(document).ready(function() {
-			  $('pre code').each(function(i, block) {
-			    hljs.highlightBlock(block)
-			    console.log('hi')
-			  })
-			});</script>
 		<% end %>
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
  

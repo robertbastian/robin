@@ -6,6 +6,8 @@ class ProblemsController < ApplicationController
     def show
         @problem = Problem.find(params[:id])
         @solutions = @problem.solutions
+        @is_most_recent = @problem == most_recent_problem
+        @my_solution = @solutions.select {|x| x.user = current_user }
     end
 
     def new
