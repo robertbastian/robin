@@ -11,7 +11,7 @@
 				</div>
 				<div class="panel-footer">
 					Rating:
-					<input class="rating-slider" type="text" data-slider-min="1" data-slider-max="5" data-slider-step="1" data-slider-value="3" name="s_<%= s.id %>" />
+					<input class="rating-slider" type="text" data-slider-min="1" data-slider-max="100" data-slider-step="1" data-slider-value="60" data-slider-tooltip="hide" name="s_<%= s.id %>" />
 				</div>
 			</div>
 		<% end %>
@@ -20,7 +20,3 @@
 
 <% end %>
 </div>
-
-<script>
-$('.rating-slider').slider();
-</script>
