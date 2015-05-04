@@ -3,6 +3,4 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $ ->
-	$('#like').slider()
-	$('form').submit ->
-		$(@).append $('<input name="like" type="hidden"/>').attr('value',$('#like').slider('getValue'))
+	$('.rating-slider').slider()
