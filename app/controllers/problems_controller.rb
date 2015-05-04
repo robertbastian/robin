@@ -48,7 +48,7 @@ class ProblemsController < ApplicationController
 	def update
 		@problem = Problem.find(params[:id])
 		@winner = Solution.find(params.require(:winning_solution_id).to_i).user
-		if @problem.update(winner_id: @winner.id)
+		if @problem.update(winner_id: @winner.id) and @winner.increment!(:score)
 			redirect_to @problem
 		else
 			render 'edit'
