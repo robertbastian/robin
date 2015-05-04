@@ -9,15 +9,5 @@ class DashboardController < ApplicationController
 
 	def dashboard
 		@most_recent_problem = most_recent_problem
-		if question_master?
-			render 'setter_dashboard'
-		else
-			
-		end
-		if active_problem?
-			
-		else
-			
-		end
 	end
 end

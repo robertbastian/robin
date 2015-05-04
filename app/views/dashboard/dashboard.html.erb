@@ -1,20 +1,26 @@
 <% @title = 'Dashboard | Robin' %>
+
+<div class="container">
+
 <h1>Dashboard</h1>
+
 <% if active_problem? %>
 	<div class="panel panel-default">
 	  <div class="panel-heading">
 	    <h3 class="panel-title">Current problem: <%= link_to most_recent_problem.title, problem_url(most_recent_problem) %></h3>
 	  </div>
 	  <div class="panel-body">
-	    <%= @most_recent_problem.text %>
+	    <%= link_to 'Write solution', new_problem_solution_path(@most_recent_problem), class: 'btn btn-lg btn-info btn-block' %>
 	  </div>
-	  <div class="panel-footer">
-	  	<%= link_to 'Write solution', new_problem_solution_path(most_recent_problem) %>
-	  </div>
-
 	</div>
 <% else %>
 	<p>No current problem</p>
-	<p><%= link_to 'Create a new problem', new_problem_url %></p>
+	<% if @most_recent_problem.winner == current_user %>
+		<p><%= link_to 'Create a new problem', new_problem_url, class: 'btn btn-lg btn-info btn-block' %></p>
+	<% elsif @most_recent_problem.winner == nil %>
+		<div class="alert alert-info"> The last problem has not yet been graded by <%= @most_recent_problem.author.name %>. Remind him to do it soon, so the next round can begin! </div>
+	<% else %>
+		<div class="alert alert-info"><%=@most_recent_problem.winner.name%> won the last problem. Only he can set the next one </div>
+	<% end %>
 <% end %>
 </div>
