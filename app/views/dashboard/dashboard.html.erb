@@ -13,9 +13,9 @@
 				</div>
 				<div class="panel-body">
 					<% if active_problem? %>
-						Click <%= link_to  'here', problem_url(most_recent_problem) %> to go to the most recent challenge, <% most_recent_problem.title %>, which was added by <% most_recent_problem.user %>
+						Click <%= link_to  'here', problem_url(most_recent_problem) %> to go to the most recent challenge, <% most_recent_problem.title %>, which was added by <% most_recent_problem.author.name %>
 						    #<%= link_to 'Write solution', new_problem_solution_path(@most_recent_problem), class: 'btn btn-lg btn-info btn-block' %>
-						  
+
 					<% else %>
 						<!-- <p>No current problem</p> -->
 						<% if !@most_recent_problem %>
@@ -64,9 +64,7 @@
 					<h3 class="panel-title">Your score</h3>
 				</div>
 				<div class="panel-body">
-					Your score is:
-					<h1><% current_user.score %></h1>
-					<h1>99</h1>
+					<h1><%= current_user.score %> points</h1>
 				</div>
 			</div>
 			<div class="panel panel-default">
