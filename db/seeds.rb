@@ -24,13 +24,11 @@ ack = Problem.create(title: "Functional Curried Ackermann",
 
 
 Solution.create(
-	"f g = foldn (g 1, g)
+	text: "f g = foldn (g 1, g)
 	-- ack_c x gives a function from Nat -> Nat.
 	-- ack_c 0 gives succ,
 	-- ack_c 1 gives f succ,
-	-- and so on.
-
-	",
+	-- and so on.",
 	user_id: aiken.id,
 	problem_id: ack.id,
 	created_at: (5.days - 4.hours).ago,
@@ -39,8 +37,7 @@ Solution.create(
 	language: "Haskell")
 
 Solution.create(
-	"What is this I don't even
-	",
+	text: "What is this I don't even",
 	user_id: rob.id,
 	problem_id: ack.id,
 	created_at: (5.days - 6.hours).ago,
@@ -49,8 +46,7 @@ Solution.create(
 	language: "Haskell")
 
 Solution.create(
-	"Why functional programming?
-	",
+	text: "Why functional programming?",
 	user_id: paavan.id,
 	problem_id: ack.id,
 	created_at: (5.days - 9.hours).ago,
@@ -66,13 +62,11 @@ fib = Problem.create(title: "Fibonacci Numbers",
 	user_id: aiken.id,
 	created_at: 4.days.ago,
 	updated_at: 4.days.ago)
-	)
 
 Solution.create(
-	"Why functional programming?
+	text: "Why functional programming?
 	It's clean and shiny and perfect and round...
-	fib = 0:1:zipWith (+) fib (drop 1 fib)
-	",
+	fib = 0:1:zipWith (+) fib (drop 1 fib)",
 	user_id: james.id,
 	problem_id: fib.id,
 	created_at: (4.days - 3.hours).ago,
@@ -82,8 +76,7 @@ Solution.create(
 
 
 Solution.create(
-	"These questions aren't hard at all.
-	",
+	text: "These questions aren't hard at all.",
 	user_id: paavan.id,
 	problem_id: fib.id,
 	created_at: (4.days - 5.hours).ago,
