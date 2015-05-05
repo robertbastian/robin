@@ -15,7 +15,10 @@
 	</div>
 <% else %>
 	<p>No current problem</p>
-	<% if @most_recent_problem.winner == current_user %>
+	<% if !@most_recent_problem %>
+		<div class="alert alert-info"> No most recent problem – probably no problems yet. Why don't you create one? <%= link_to 'Create a new problem', new_problem_url, class: 'btn btn-lg btn-info btn-block' %> </div>
+
+	<% elsif @most_recent_problem.winner == current_user %>
 		<p><%= link_to 'Create a new problem', new_problem_url, class: 'btn btn-lg btn-info btn-block' %></p>
 	<% elsif @most_recent_problem.winner == nil %>
 		<div class="alert alert-info"> The last problem has not yet been graded by <%= @most_recent_problem.author.name %>. Remind him to do it soon, so the next round can begin! </div>
