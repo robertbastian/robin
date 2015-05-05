@@ -15,10 +15,10 @@ alistair = User.create(name: "alistair", email: "alistair@ox.ac.uk", password: "
 #james.problems.build(title: "Functional Curried Ackermann", text: "The ackermann function is defined ack(0,y) = y+1, ack(x+1,0) = ack(x,1), ack (x+1,y+1) = ack(x, ack(x+1, y)).
 	#Define f such that ack_c = foldn (succ, f) is a curried version of the ackermann function, i.e. ack(x,y) = ack_c x y. Succ is the natural number successor function, and foldn (e, g) n applies g to e n times.", expiry: 1.day.from_now)
 ack = Problem.create(title: "Functional Curried Ackermann",
-	text: "The ackermann function is defined ack(0,y) = y+1, ack(x+1,0) = ack(x,1), ack (x+1,y+1) = ack(x, ack(x+1, y)).
-	Define f such that ack_c = foldn (succ, f) is a curried version of the ackermann function, i.e. ack(x,y) = ack_c x y. Succ is the natural number successor function, and foldn (e, g) n applies g to e n times.",
+	text: "<p>The <em>Ackermann</em> function is defined as:</p><ul><li><p><code>ack(0,y) = y+1</code></p></li><li><p><code>ack(x+1,0) = ack(x,1)</code></p></li><li><p><code>ack (x+1,y+1) = ack(x, ack(x+1, y))</code></p></li></ul><p>Define <code>f</code> such that <code>ack_c = foldn (succ, f)</code> is a curried version of the <em>Ackermann</em> function, i.e. <code>ack(x,y) = ack_c x y</code>. Here, <code>succ</code> is the natural number successor function, and <code>foldn (e, g) n</code> applies <code>g</code> to <code>e</code> n times.</p>",
 	expiry: 4.days.ago,
 	user_id: james.id,
+	winner_id: aiken.id,
 	created_at: 5.days.ago,
 	updated_at: 5.days.ago)
 
@@ -60,6 +60,7 @@ fib = Problem.create(title: "Fibonacci Numbers",
 	text: "Write a definition for an infinite list of the fibonacci numbers in Haskell",
 	expiry: 3.days.ago,
 	user_id: aiken.id,
+	winner_id: rob.id,
 	created_at: 4.days.ago,
 	updated_at: 4.days.ago)
 
