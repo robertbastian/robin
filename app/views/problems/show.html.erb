@@ -31,7 +31,7 @@
 	<% if !@is_most_recent || question_master? %>
 		<% # This is an old problem or this is the current problem and you are the question master %>
 		<h4>Solutions</h4>
-		<%= @col = {:user => !@is_most_recent, :problem => false}; render "solutions/solutions_table" %>
+		<%= @col = {:user => true, :problem => false}; render "solutions/solutions_table" %>
 	<% elsif  @my_solution.size > 0 %>
 		<% # This is the current problem and you have submitted a solution %>
 		<h4>Your solution</h4>
@@ -48,8 +48,8 @@
 						<%= f.label 'How did you like this problem?' %>
 					</div>
 					<div class="col-sm-5 form-group">
-						Not so much 
-						<input type="text" class='rating-slider' name='like' value="" data-slider-min="1" data-slider-max="150" data-slider-step="1" data-slider-value="90" data-slider-selection="before" data-slider-tooltip="hide"> 
+						Not so much
+						<input type="text" class='rating-slider' name='like' value="" data-slider-min="1" data-slider-max="150" data-slider-step="1" data-slider-value="90" data-slider-selection="before" data-slider-tooltip="hide">
 						A lot
 					</div>
 					<div class="col-sm-4 form-group text-right">

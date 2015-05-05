@@ -8,7 +8,7 @@
 			<th>Problem</th>
 		<% end %>
 	</tr>
-	<% @solutions.each do |solution| %>
+	<% @solutions.each do |solution|; solution.reload %>
 		<tr>
 			<td><%= link_to solution.text.truncate(50, separator: '\n'), [solution.problem,solution] %></td>
 			<td><%= solution.score %></td>
