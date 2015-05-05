@@ -13,7 +13,7 @@
 				</div>
 				<div class="panel-body">
 					<% if active_problem? %>
-						Click <%= link_to  'here', problem_url(most_recent_problem) %> to go to the most recent challenge, <% most_recent_problem.title %>, which was added by <% most_recent_problem.user %>
+						Click <%= link_to  'here', problem_url(most_recent_problem) %> to go to the most recent challenge, <% most_recent_problem.title %>, which was added by <% most_recent_problem.user_id %>
 						    #<%= link_to 'Write solution', new_problem_solution_path(@most_recent_problem), class: 'btn btn-lg btn-info btn-block' %>
 						  
 					<% else %>
