@@ -1,29 +1,87 @@
 <% @title = 'Dashboard | Robin' %>
 
 <div class="container">
-
-<h1>Dashboard</h1>
-
-<% if active_problem? %>
-	<div class="panel panel-default">
-	  <div class="panel-heading">
-	    <h3 class="panel-title">Current problem: <%= link_to most_recent_problem.title, problem_url(most_recent_problem) %></h3>
-	  </div>
-	  <div class="panel-body">
-	    <%= link_to 'Write solution', new_problem_solution_path(@most_recent_problem), class: 'btn btn-lg btn-info btn-block' %>
-	  </div>
+	<div class="row">
+		<h1>Dashboard</h1>
 	</div>
-<% else %>
-	<p>No current problem</p>
-	<% if !@most_recent_problem %>
-		<div class="alert alert-info"> No most recent problem – probably no problems yet. Why don't you create one? <%= link_to 'Create a new problem', new_problem_url, class: 'btn btn-lg btn-info btn-block' %> </div>
+	<hr />
+	<div class="row">
+		<div class="col-md-6">
+			<div class="panel panel-default">
+			  	<div class="panel-heading">
+				    <h3 class="panel-title">Current challenge</h3>
+				</div>
+				<div class="panel-body">
+					<% if active_problem? %>
+						Click <%= link_to  'here', problem_url(most_recent_problem) %> to go to the most recent challenge, <% most_recent_problem.title %>, which was added by <% most_recent_problem.user %>
+						    #<%= link_to 'Write solution', new_problem_solution_path(@most_recent_problem), class: 'btn btn-lg btn-info btn-block' %>
+						  
+					<% else %>
+						<!-- <p>No current problem</p> -->
+						<% if !@most_recent_problem %>
+							Currently, no challenge has been set. Maybe you should create one?
+							<%= link_to 'Click here to do so.', new_problem_url, class: 'btn btn-default' %>
+						<% elsif @most_recent_problem.winner == current_user %>
+							<p><%= link_to 'Create a new problem', new_problem_url, class: 'btn btn-lg btn-info btn-block' %></p>
+						<% elsif @most_recent_problem.winner == nil %>
+							<div class="alert alert-info"> The last problem has not yet been graded by <%= @most_recent_problem.author.name %>. Remind him to do it soon, so the next round can begin! </div>
+						<% else %>
+							<div class="alert alert-info"><%=@most_recent_problem.winner.name%> won the last problem. Only he can set the next one </div>
+						<% end %>
+					<% end %>
+				</div>
+			</div>
+<!-- 			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title"></h3>
+				</div>
+				<div class="panel-body">
+				</div>
+			</div> -->
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">john</h3>
+				</div>
+				<div class="panel-body">
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">kjacob</h3>
+				</div>
+				<div class="panel-body">
+				jingle
+				</div>
+			</div>
+		</div>
 
-	<% elsif @most_recent_problem.winner == current_user %>
-		<p><%= link_to 'Create a new problem', new_problem_url, class: 'btn btn-lg btn-info btn-block' %></p>
-	<% elsif @most_recent_problem.winner == nil %>
-		<div class="alert alert-info"> The last problem has not yet been graded by <%= @most_recent_problem.author.name %>. Remind him to do it soon, so the next round can begin! </div>
-	<% else %>
-		<div class="alert alert-info"><%=@most_recent_problem.winner.name%> won the last problem. Only he can set the next one </div>
-	<% end %>
-<% end %>
+		<div class="col-md-6">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Your score</h3>
+				</div>
+				<div class="panel-body">
+					Your score is:
+					<h1><% current_user.score %></h1>
+					<h1>99</h1>
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Big ass logo</h3>
+				</div>
+				<div class="panel-body">
+					<% image_tag("robin_justbird_square.PNG", alt: "") %>
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">3</h3>
+				</div>
+				<div class="panel-body">
+					Lorem ipsum dolor 
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
