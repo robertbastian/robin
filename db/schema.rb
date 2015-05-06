@@ -11,15 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150504141443) do
+ActiveRecord::Schema.define(version: 20150506200604) do
 
   create_table "problems", force: :cascade do |t|
     t.string   "title"
     t.text     "text"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "score"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "score",      default: 0
     t.integer  "winner_id"
     t.datetime "expiry"
   end
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20150504141443) do
     t.integer  "problem_id"
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
-    t.integer  "score"
+    t.integer  "score",           default: 0
     t.string   "title"
     t.boolean  "has_been_scored", default: false
     t.string   "language"
