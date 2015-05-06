@@ -38,6 +38,9 @@
 		        <li><%= link_to(problems_url) do %>
 		        	 	<i class="fa fa-fw fa-list-alt"></i> Archive
 	        	<% end %></li>
+	        	<li><%= link_to('/sessions/faq') do %>
+		        	 	<i class="fa fa-fw fa-info"></i> FAQ
+	        	<% end %></li>
 		        <li class="dropdown">
 		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
 		          	<i class="fa fa-fw fa-user"></i> <%=current_user.name %> <span class="caret"></span></a>
@@ -52,6 +55,9 @@
 		          </ul>
 		        </li>
 		    <% else %>
+		    	<%= link_to('/sessions/faq'), :class => 'btn btn-default navbar-btn') do %>
+		    		About Robin <i class="fa fa-fw fa-info"></i>
+		    	<% end %>
 		        <%= link_to(login_url, :class => 'btn btn-default navbar-btn') do %> 
 		        	Log in <i class="fa fa-fw fa-sign-in"></i>
 		        <% end %>
