@@ -38,7 +38,7 @@
 		        <li><%= link_to(problems_url) do %>
 		        	 	<i class="fa fa-fw fa-list-alt"></i> Archive
 	        	<% end %></li>
-	        	<li><%= link_to('/sessions/faq') do %>
+	        	<li><%= link_to('/faq') do %>
 		        	 	<i class="fa fa-fw fa-info"></i> FAQ
 	        	<% end %></li>
 		        <li class="dropdown">
@@ -56,6 +56,7 @@
 		        </li>
 		    <% else %>
 		    	<%= link_to('/sessions/faq', :class => 'btn btn-default navbar-btn') do %>
+		    	<!-- not sure if it should be sessions/faq or just faq but right now the route sessions/faq goes to sessions#faq.-->
 		    		About Robin <i class="fa fa-fw fa-info"></i>
 		    	<% end %>
 		        <%= link_to(login_url, :class => 'btn btn-default navbar-btn') do %> 

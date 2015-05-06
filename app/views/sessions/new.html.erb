@@ -1,8 +1,10 @@
 <% @title = 'Login | Robin' %>
 
 <div class="container">
-<div class="row text-center"><div class='col-md-4 col-md-offset-4'>
-  <h1>Log in</h1>
+<div class="row text-center">
+<div class='col-md-4 col-md-offset-4'>
+<form class="horizontal">
+  <legend><h1>Log in</h1></legend>
 
   <%= form_for(:session, url: login_path) do |f| %>
 
@@ -15,8 +17,11 @@
     <%= f.label :password %>
     <%= f.password_field :password, class: 'form-control' %>
     </div>
+
     <%= f.submit "Log in", class: "btn btn-primary" %>
+
   <% end %>
 
-  <p><br>New user? <%= link_to "Sign up now!", '/users/new' %></p>
+  <br />
+  <p>New user? <%= link_to "Sign up now!", '/users/new' %></p>
 </div></div></div>

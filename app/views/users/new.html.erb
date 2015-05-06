@@ -1,40 +1,63 @@
 <div class="container">
     <div class="row">
-      <div class="twelve columns">
+        <div class="col-md-6">
+            <form class="form-horizontal"><fieldset>
+                <legend><h1>Create an account</h1></legend>
+                <p>If you already have an account, <%= link_to "click here to login", '/login' %>.
+                    <br />
+                    <br />
+                    <%= form_for @user, url: users_path do |f| %>
+                    <div class="form-group">
+                        <%= f.label :name, :class => "col-sm-3 control-label" %>
+                        <div class="col-sm-9">
+                            <%= f.text_field :name, :class => "form-control" %>
+                            <p class="help-block">Do not include spaces.</p>
+                        </div>
+                    </div>
+                    <div class="form-group">      
+                        <%= f.label :email, :class => "col-sm-3 control-label"  %>
+                        <div class="col-sm-9">
+                            <%= f.text_field :email, :class => "form-control" %>
+                            <p class="help-block">Please provide a valid email address.</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <%= f.label :password, :class => "col-sm-3 control-label"  %>
+                        <div class="col-sm-9">
+                            <%= f.password_field :password, :class => "form-control" %>
+                            <p class="help-block">Password should be a minimum of 8 characters.</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <%= f.label :password_confirmation, :class => "col-sm-3 control-label" %>
+                        <div class="col-sm-9">
+                            <%= f.password_field :password_confirmation, :class => "form-control" %>
+                            <p class="help-block">Please confirm password.</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-3"></div>
+                        <div class="col-sm-9">
+                            <%= check_box_tag(:agree_to_tos) %>
+                            I agree to the <a href='https://www.youtube.com/watch?v=dQw4w9WgXcQ' target="_blank">Terms of Service</a>
+                        </div>
+                    </div>
+                    <br />
 
-<h1>Create an account</h1>
-<p>Already have an account? <%= link_to "Click here to login", '/login' %>.
 
-<%= form_for @user, url: users_path do |f| %>
-  <p>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </p>
+                    <div class="form-group">
+                    <!-- how the hell do you style this -->
+                        <%= f.submit %>
+                    </div>
 
-  <p>
-    <%= f.label :email %>
-    <%= f.text_field :email %>
-  </p>
+                    <% end %>
 
-  <p>
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-  </p>
+                </fieldset></form>
+            </div>
+            <div class="col-md-6">
 
-  <p>
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation %>
-  </p>
+                <!-- ROBIN offers this Web site, including all information, software, products and services available from this Web site or offered as part of or in conjunction with this Web site (the "Web site"), to you, the user, conditioned upon your acceptance of all of the terms, conditions, policies and notices stated here. ROBIN reserves the right to make changes to these Terms and Conditions immediately by posting the changed Terms and Conditions in this location.<br /><br />Your continued use of the Web site constitutes your agreement to all such terms, conditions and notices, and any changes to the Terms and Conditions made by ROBIN.<br /><br />The term 'us' or 'we' refers to the owner of the website. The term 'you' refers to the user or viewer of our website.<br /><br />The use of this website is subject to the following terms of use:<br /><br />Use the website at your own risk. This website is provided to you "as is," without warranty of any kind either express or implied. Neither ROBIN nor its employees, agents, third-party information providers, merchants, licensors or the like warrant that the Web site or its operation will be accurate, reliable, uninterrupted or error-free. No agent or representative has the authority to create any warranty regarding the Web site on behalf of ROBIN. ROBIN reserves the right to change or discontinue at any time any aspect or feature of the Web site.<br /><br /><h4>Exclusion of Liability</h4>The content of the pages of this website is for your general information and use only. It is subject to change without notice.<br /><br />Neither we nor any third parties provide any warranty or guarantee as to the accuracy, timeliness, performance, completeness or suitability of the information and materials found or offered on this website for any particular purpose. You acknowledge that such information and materials may contain inaccuracies or errors and we expressly exclude liability for any such inaccuracies or errors to the fullest extent permitted by law.<br /><br /><h4>Indemnification</h4>Your use of any information or materials on this website is entirely at your own risk, for which we shall not be liable. It shall be your own responsibility to ensure that any products, services or information available through this website meet your specific requirements.<br /><br />This website contains material which is owned by or licensed to us. This material includes, but is not limited to, the design, layout, look, appearance and graphics. Reproduction is prohibited other than in accordance with the copyright notice, which forms part of these terms and conditions.<br /><br />All trade marks reproduced in this website which are not the property of, or licensed to, the operator are acknowledged on the website.<br /><br />Unauthorized use of this website may give rise to a claim for damages and/or be a criminal offense.<br /><br />From time to time this website may also include links to other websites. These links are provided for your convenience to provide further information. They do not signify that we endorse the website(s). We have no responsibility for the content of the linked website(s).<br /><br /><h4>Copyright</h4>Except for material in the public domain under United States copyright law, all material contained on the Web site (including all software, HTML code, Java applets, Active X controls and other code) is protected by United States and foreign copyright laws. Except as otherwise expressly provided in these terms and conditions, you may not copy, distribute, transmit, display, perform, reproduce, publish, license, modify, rewrite, create derivative works from, transfer, or sell any material contained on the Web site without the prior consent of the copyright owner.<br /><br />None of the material contained on ROBIN may be reverse-engineered, disassembled, decompiled, transcribed, stored in a retrieval system, translated into any language or computer language, retransmitted in any form or by any means (electronic, mechanical, photo reproduction, recordation or otherwise), resold or redistributed without the prior written consent of ROBIN. Violation of this provision may result in severe civil and criminal penalties.<br /><br /> -->
 
-  <p>
-    <%= check_box_tag(:agree_to_tos) %>
-    I agree to the <a href='https://www.youtube.com/watch?v=dQw4w9WgXcQ' target="_blank">Terms of Service</a>
-  </p>
-
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
-</div>
-</div>
-</div>
+            </div>
+        </div>
+    </div>
