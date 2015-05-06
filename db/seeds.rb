@@ -19,6 +19,7 @@ ack = Problem.create(title: "Functional Curried Ackermann",
 	expiry: 4.days.ago,
 	user_id: james.id,
 	winner_id: aiken.id,
+	score: 50
 	created_at: 5.days.ago,
 	updated_at: 5.days.ago)
 
@@ -28,11 +29,20 @@ Solution.create(
 	-- ack_c x gives a function from Nat -> Nat.
 	-- ack_c 0 gives succ,
 	-- ack_c 1 gives f succ,
-	-- and so on.",
+	-- and so on.
+	-- This can be explained by noticing that
+	-- the partially applied function
+	-- ack(x+1, _) is a function defined in terms of ack(x, _).
+	-- if we expand the definitions we see that ack(x+1, y) =
+	-- ack(x, ack(x+1, y-1)) = ack(x, ack(x, ack(x+1, y-2))) = ... =
+	-- ack(x, _)^y(ack(x+1, y-y)) = ack(x, _)^y(ack(x,1))
+	-- this is precisely foldn (ack(x,1), ack(x, _)) y.
+",
 	user_id: aiken.id,
 	problem_id: ack.id,
 	created_at: (5.days - 4.hours).ago,
 	updated_at: (5.days - 4.hours).ago,
+	score: 70
 	title: "",
 	language: "Haskell")
 
@@ -85,4 +95,46 @@ Solution.create(
 	title: "",
 	language: "Haskell")
 
+
+Solution.create(
+	text: "These questions aren't hard at all.",
+	user_id: paavan.id,
+	problem_id: fib.id,
+	created_at: (4.days - 5.hours).ago,
+	updated_at: (4.days - 5.hours).ago,
+	title: "",
+	language: "Haskell")
+
+Solution.create(
+	text: "I think I should be the winner.",
+	user_id: rob.id,
+	problem_id: fib.id,
+	created_at: (4.days - 7.hours).ago,
+	updated_at: (4.days - 7.hours).ago,
+	title: "",
+	language: "Haskell")
+
+
+ack2 = Problem.create(title: "Sliding Window Protocol",
+	text: "Write CSO functions <code>[T]Send(n: Int, out: ![T], get_ack: ?[Int]): Proc</code> 
+	and <code>[T]Recv(n: Int, in: ?[T], ack: ![Int]): Proc </code>
+	that correctly send frames T over a lossy network modelled by lossy, using
+	the sliding window protocol with windows of size n. Note if n = 1 this is the alternating bit protocol.
+	<code>
+	def lossy(in: OneOne[T], out: OneOne[T], get_ack: OneOne[Int], ack: OneOne[Int]): Proc = {
+		val r = new scala.util.random
+		serve (
+			out =?=> {x:T => if (r.nextInt(2) == 0) in!x}
+			ack =?=> {x:Int => if (r.nextInt(2) == 0) get_ack!x}
+		)
+
+	}
+	val in, out = OneOne[T]
+	val get_ack, ack = OneOne[Int]
+	</code>
+	",
+	expiry: 2.days.ago,
+	user_id: rob.id,
+	created_at: 3.days.ago,
+	updated_at: 3.days.ago)
 
