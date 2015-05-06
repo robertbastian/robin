@@ -75,8 +75,8 @@ fib = Problem.create(title: "Fibonacci Numbers",
 	updated_at: 4.days.ago)
 
 Solution.create(
-	text: "Why functional programming?
-	It's clean and shiny and perfect and round...
+	text: "--Why functional programming?
+	--It's clean and shiny and perfect and round...
 	fib = 0:1:zipWith (+) fib (drop 1 fib)",
 	user_id: james.id,
 	problem_id: fib.id,
@@ -135,6 +135,7 @@ ack2 = Problem.create(title: "Sliding Window Protocol",
 	",
 	expiry: 2.days.ago,
 	user_id: rob.id,
+	score: 500
 	created_at: 3.days.ago,
 	updated_at: 3.days.ago)
 
