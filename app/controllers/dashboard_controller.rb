@@ -8,6 +8,7 @@ class DashboardController < ApplicationController
 	end
 
 	def dashboard
-		@most_recent_problem = most_recent_problem
+		@leaders = User.order(:score => :desc).limit(3)
+                @most_recent_problem = most_recent_problem
 	end
 end

@@ -2,5 +2,4 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-$(document).on 'page:load', -> 
-	$('.solutionpre code').each((i, block) -> hljs.highlightBlock(block))
+$ -> $('.solutionpre code').each((i, block) -> hljs.highlightBlock(block))
