@@ -53,7 +53,7 @@
 				<table class="table panel-body">
 				<tr><th>#</th><th>Name</th><th>Points</th>
 				<% i = 0; @leaders.each do |user| %>
-				<tr><td><%= i = i+1; i %></td><td><%=user.name%></td><td><%=user.score%></td></tr>
+				<tr><td><%= i = i+1; i %></td><td><%=link_to user.name, user%></td><td><%=user.score%></td></tr>
 				<% end %>
   				</table>
 			</div>
