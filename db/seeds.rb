@@ -6,9 +6,9 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-james = User.create(name: "james", email: "james@ox.ac.uk", password: "testtest", password_confirmation: "testtest")
-aiken = User.create(name: "aiken", email: "aiken@ox.ac.uk", password: "testtest", password_confirmation: "testtest")
-rob = User.create(name: "rob", email: "rob@ox.ac.uk", password: "testtest", password_confirmation: "testtest")
+james = User.create(name: "james", email: "james@ox.ac.uk", password: "testtest", password_confirmation: "testtest",score: 50)
+aiken = User.create(name: "aiken", email: "aiken@ox.ac.uk", password: "testtest", password_confirmation: "testtest",score: 124)
+rob = User.create(name: "rob", email: "rob@ox.ac.uk", password: "testtest", password_confirmation: "testtest",score: 80)
 paavan = User.create(name: "paavan", email: "paavan@ox.ac.uk", password: "testtest", password_confirmation: "testtest")
 alistair = User.create(name: "alistair", email: "alistair@ox.ac.uk", password: "testtest", password_confirmation: "testtest")
 
@@ -19,7 +19,7 @@ ack = Problem.create(title: "Functional Curried Ackermann",
 	expiry: 4.days.ago,
 	user_id: james.id,
 	winner_id: aiken.id,
-	score: 50
+	score: 50,
 	created_at: 5.days.ago,
 	updated_at: 5.days.ago)
 
@@ -42,7 +42,7 @@ Solution.create(
 	problem_id: ack.id,
 	created_at: (5.days - 4.hours).ago,
 	updated_at: (5.days - 4.hours).ago,
-	score: 70
+	score: 70,
 	title: "",
 	language: "Haskell")
 
@@ -116,24 +116,27 @@ Solution.create(
 
 
 ack2 = Problem.create(title: "Sliding Window Protocol",
-	text: "Write CSO functions <code>[T]Send(n: Int, out: ![T], get_ack: ?[Int]): Proc</code> 
-	and <code>[T]Recv(n: Int, in: ?[T], ack: ![Int]): Proc </code>
-	that correctly send frames T over a lossy network modelled by lossy, using
-	the sliding window protocol with windows of size n. Note if n = 1 this is the alternating bit protocol.
-	<code>
-	def lossy(in: OneOne[T], out: OneOne[T], get_ack: OneOne[Int], ack: OneOne[Int]): Proc = {
-		val r = new scala.util.random
-		serve (
-			out =?=> {x:T => if (r.nextInt(2) == 0) in!x}
-			ack =?=> {x:Int => if (r.nextInt(2) == 0) get_ack!x}
-		)
+	text: "<p>Write CSO functions </p>
 
-	}
-	val in, out = OneOne[T]
-	val get_ack, ack = OneOne[Int]
-	</code>
-	",
-	expiry: 2.days.ago,
+<ul>
+<li>
+<code>[T]Send(n: Int, out: ![T], get_ack: ?[Int]): Proc</code>  and </li>
+<li><code>[T]Recv(n: Int, in: ?[T], ack: ![Int]): Proc</code></li>
+</ul>
+
+<p>that correctly send frames <code>T</code> over a lossy network modelled by <code>lossy</code>, using the sliding window protocol with windows of size <code>n</code>. Note if <code>n = 1</code> this is the alternating bit protocol.</p>
+
+<pre><code>def lossy(in: OneOne[T], out: OneOne[T], get_ack: OneOne[Int], ack: OneOne[Int]): Proc = {
+        val r = new scala.util.random
+        serve (
+                out =?=&gt; {x:T =&gt; if (r.nextInt(2) == 0) in!x}
+                ack =?=&gt; {x:Int =&gt; if (r.nextInt(2) == 0) get_ack!x}
+        )
+}
+val in, out = OneOne[T]
+val get_ack, ack = OneOne[Int]
+</code></pre>",
+	expiry: 2.days.from_now,
 	user_id: rob.id,
 	created_at: 3.days.ago,
 	updated_at: 3.days.ago)

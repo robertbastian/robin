@@ -50,26 +50,28 @@
 				<div class="panel-heading">
 					<h3 class="panel-title">Leaderboard</h3>
 				</div>
-				<div class="panel-body">
-				[top three of leaderboard]
-				Click here to check out the rest of the leaderboard, and see who's on top!
-				</div>
+				<table class="table panel-body">
+				<tr><th>#</th><th>Name</th><th>Points</th>
+				<% i = 0; @leaders.each do |user| %>
+				<tr><td><%= i = i+1; i %></td><td><%=user.name%></td><td><%=user.score%></td></tr>
+				<% end %>
+  				</table>
 			</div>
 		</div>
 
 		<div class="col-md-6">
+
+			<div class="panel panel-default">
+				<div class="panel-body row">
+					<div class='col-xs-6 col-xs-offset-3'><%= image_tag("robin_justbird_square.PNG", class: "img-responsive",alt: "") %>
+				</div></div>
+			</div>
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h3 class="panel-title">Your score</h3>
 				</div>
 				<div class="panel-body">
 					<h1><%= current_user.score %> points</h1>
-				</div>
-			</div>
-			<div class="panel panel-default">
-
-				<div class="panel-body">
-					<%= image_tag("robin_justbird_square.PNG", alt: "") %>
 				</div>
 			</div>
 			<div class="panel panel-default">
