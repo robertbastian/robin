@@ -71,6 +71,7 @@ fib = Problem.create(title: "Fibonacci Numbers",
 	expiry: 3.days.ago,
 	user_id: aiken.id,
 	winner_id: rob.id,
+	score: 78,
 	created_at: 4.days.ago,
 	updated_at: 4.days.ago)
 
@@ -138,7 +139,7 @@ val get_ack, ack = OneOne[Int]
 </code></pre>",
 	expiry: 2.days.from_now,
 	user_id: rob.id,
-	score: 500
+	score: 500,
 	created_at: 3.days.ago,
 	updated_at: 3.days.ago)
 
