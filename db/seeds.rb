@@ -116,10 +116,11 @@ Solution.create(
 
 
 ack2 = Problem.create(title: "Sliding Window Protocol",
-	text: "Write CSO functions [T]Send(n: Int, out: ![T], get_ack: ?[Int]): Proc 
-	and [T]Recv(n: Int, in: ?[T], ack: ![Int]): Proc 
+	text: "Write CSO functions <code>[T]Send(n: Int, out: ![T], get_ack: ?[Int]): Proc</code> 
+	and <code>[T]Recv(n: Int, in: ?[T], ack: ![Int]): Proc </code>
 	that correctly send frames T over a lossy network modelled by lossy, using
 	the sliding window protocol with windows of size n. Note if n = 1 this is the alternating bit protocol.
+	<code>
 	def lossy(in: OneOne[T], out: OneOne[T], get_ack: OneOne[Int], ack: OneOne[Int]): Proc = {
 		val r = new scala.util.random
 		serve (
@@ -130,6 +131,7 @@ ack2 = Problem.create(title: "Sliding Window Protocol",
 	}
 	val in, out = OneOne[T]
 	val get_ack, ack = OneOne[Int]
+	</code>
 	",
 	expiry: 2.days.ago,
 	user_id: rob.id,
