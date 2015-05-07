@@ -23,7 +23,6 @@ ack = Problem.create(title: "Functional Curried Ackermann",
 	created_at: 5.days.ago,
 	updated_at: 5.days.ago)
 
-
 Solution.create(
 	text: "f g = foldn (g 1, g)
 	-- ack_c x gives a function from Nat -> Nat.
@@ -127,4 +126,13 @@ val get_ack, ack = OneOne[Int]
 	score: 0,
 	created_at: (3.days-11.minutes).ago,
 	updated_at: (3.days-11.minutes).ago)
+	
+Solution.create(
+	text: "This is an excellent solution that should get full marks",
+	user_id: aiken.id,
+	created_at: (2.days - 1.hours).ago,
+	updated_at: (2.days - 1.hours).ago,
+	score: 0,
+	title: "",
+	language: "Haskell")
 
