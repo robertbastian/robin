@@ -10,7 +10,7 @@
 			<%= javascript_include_tag "highlight.pack" %>
 		<% end %>
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
- 
+
 		<%= favicon_link_tag 'favicon.ico' %>
 </head>
 <body>
@@ -55,11 +55,11 @@
 		          </ul>
 		        </li>
 		    <% else %>
-		    	<%= link_to('/sessions/faq', :class => 'btn btn-default navbar-btn') do %>
+		    	<%= link_to('/faq', :class => 'btn btn-default navbar-btn') do %>
 		    	<!-- not sure if it should be sessions/faq or just faq but right now the route sessions/faq goes to sessions#faq.-->
 		    		About Robin <i class="fa fa-fw fa-info"></i>
 		    	<% end %>
-		        <%= link_to(login_url, :class => 'btn btn-default navbar-btn') do %> 
+		        <%= link_to(login_url, :class => 'btn btn-default navbar-btn') do %>
 		        	Log in <i class="fa fa-fw fa-sign-in"></i>
 		        <% end %>
 		        <%= link_to('/users/new', :class => 'btn btn-default navbar-btn') do %>

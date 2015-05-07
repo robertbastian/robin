@@ -2,11 +2,11 @@ Rails.application.routes.draw do
 
   root 'dashboard#front'
   get '/dashboard' => 'dashboard#dashboard'
+  get '/faq' => 'dashboard#faq'
 
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   post '/logout' => 'sessions#destroy'
-  get 'sessions/faq' => 'sessions#faq'
 
   resources :users, only: [:index, :show, :new, :create]
 
