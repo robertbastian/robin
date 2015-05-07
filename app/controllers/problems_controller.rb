@@ -27,9 +27,12 @@ class ProblemsController < ApplicationController
         session[:return_to] ||= request.referer
         @problem = Problem.find(params[:id])
         if (current_user.id != @problem.user_id)
-            flash[:danger] = "You are not the problem's writer"
+            flash[:danger] = "You are not the challenge's writer"
             redirect_to session.delete(:return_to)
-        end
+        elsif (@problem.expiry > DateTime.now)
+	    flash[:danger] = "This challege hasn't ended yet"
+	    redirect_to @problem
+	end
         @solutions = @problem.solutions
     end
 

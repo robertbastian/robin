@@ -71,8 +71,7 @@
 	  </div><!-- /.container-fluid -->
 	</nav>
 
-    <div class="container-fluid">
-
+	<div class='container'>
 		<% if flash[:notice] %>
 			<div class='alert alert-info'>
 				<%= flash[:notice] %>
@@ -82,6 +81,8 @@
 				<%= flash[:danger] %>
 			</div>
 		<% end %>
+    </div>
+    <div class="container-fluid">
 
 		<%= yield %>
 

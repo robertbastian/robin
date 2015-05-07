@@ -5,15 +5,15 @@
 		<th>User</th>
 		<th>Challenges</th>
 		<th>Solutions</th>
-                <th>Wins</th>
+    <th>Wins</th>
 		<th>Points</th>
 	</tr>
 	<% @users.each do |user| %>
 		<tr <%=if user == current_user then 'class=info' end%>>
 			<td><%= link_to user.name, user_url(user) %></td>
 			<td><%=user.problems.size %></td>
-			<td><%=Problem.count(:all,:winner => current_user) %>
 			<td><%=user.solutions.size %></td>
+			<td><%=Problem.where(:winner => user).count %>
 			<td><strong><%=user.score%></strong></td>
 		</tr>
 	<% end %>

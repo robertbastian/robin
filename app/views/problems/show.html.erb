@@ -28,7 +28,7 @@
 	<div class='well'><%= @problem.text.html_safe %></div>
 
 	<% # Which solutions should be shown? %>
-	<% if !@is_most_recent || question_master? %>
+	<% if !@is_most_recent || question_master? || @problem.winner != nil%>
 		<% # This is an old problem or this is the current problem and you are the question master %>
 		<h4>Solutions</h4>
 		<%= @col = {:user => true, :problem => false}; render "solutions/solutions_table" %>
@@ -36,7 +36,7 @@
 		<% # This is the current problem and you have submitted a solution %>
 		<h4>Your solution</h4>
 		<%= @solutions = @my_solution; @col = {:user => false, :problem => false}; render 'solutions/solutions_table' %>
-		<div class='alert alert-info'> Other users' solutions are hidden until the problem is solved.</div>
+		<div class='alert alert-info'> Other users' solutions are hidden until the problem is graded.</div>
 	<% elsif active_problem? %>
 		<% # This is the current problem, still active, and you haven't submitted a solution %>
 		<%= form_for Solution.new, url: problem_solutions_path(@problem), html: { method: :post } do |f| %>
@@ -61,8 +61,8 @@
 
 	
 	<% if question_master? and @problem.expiry < DateTime.now and not @problem.winner_id %>
-
-		<%= button_to 'Score the solutions', edit_problem_path(@problem), class: 'btn btn-primary' %></p>
-
+<div class='text-center'>
+		<%= link_to 'Mark the solutions', edit_problem_path(@problem), class: 'btn btn-primary btn-lg' %>
+</div>
 	<% end %>
 </div>

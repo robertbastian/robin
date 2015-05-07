@@ -1,7 +1,5 @@
 <div class="container">
-<h1> Editing/Marking problem </h1>
-
-<% if @problem.expiry < DateTime.now %>
+<h1> Marking problem </h1>
 
 	<%= form_for @problem, html: {method: :patch} do |f| %>
 		<% @solutions.each do |s| %>
@@ -15,8 +13,11 @@
 				</div>
 			</div>
 		<% end %>
-		<%= f.submit "Rate 'em!", class: "btn btn-primary" %>
+		<div class='row text-center'>
+  		<div class='col-sm-4 col-sm-offset-4'>
+  		<%= f.submit "Rate 'em!", class: "btn btn-primary btn-lg btn-block" %>
+  		</div>
+		</div>
 	<% end %>
 
-<% end %>
 </div>

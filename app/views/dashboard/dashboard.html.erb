@@ -10,34 +10,37 @@
 			<div class="panel panel-default">
 			  	<div class="panel-heading">
 				    <h3 class="panel-title">Current Challenge</h3>
-				</div>
-				<div class="panel-body text-center">
-					<% if active_problem? %>
-						<h3><%= most_recent_problem.title %></h1><h4><small>By: <%= link_to most_recent_problem.author.name, most_recent_problem.author %></small></h4>
-					<% else %>
-						<!-- <p>No current problem</p> -->
-						<% if !@most_recent_problem %>
-							Currently, no challenge has been set. Maybe you should create one?<br /><br />
-						<% elsif @most_recent_problem.winner == current_user %>
-							Congratulations on winning the last challenge! You now need to set a challenge for everybody else.<br /><br />
-						<% elsif @most_recent_problem.winner == nil %>
-							The last challenge has not yet been graded by <%= @most_recent_problem.author.name %>. Remind him to do it soon, so the next round can begin!
-						<% else %>
-							<%= @most_recent_problem.winner.name%> won the last challenge. Remind him to set the next one soon!
-						<% end %>
-					<% end %>
-				</div>
-				<div class="panel-footer text-center">
-					<% if active_problem? %>
-						<%= link_to 'Write solution', @most_recent_problem, class: 'btn btn-info btn-primary' %>
-					<% elsif !@most_recent_problem %>
-						<%= link_to 'Click here to do so.', new_problem_url, class: 'btn btn-default btn-primary' %>
-					<% elsif @most_recent_problem.winner == current_user %>
-						<%= link_to 'Click here to do so.', new_problem_url, class: 'btn btn-default btn-primary' %>
-					<% end %>
-				</div>
-			</div>
-		</div>
+				  </div>
+  				<div class="panel-body text-center">
+  					<% if active_problem? %>
+  						<h3><%= most_recent_problem.title %></h3><h4><small>By: <%= link_to most_recent_problem.author.name, most_recent_problem.author %></small></h4>
+  					<% elsif !@most_recent_problem %>
+  						Currently, no challenge has been set. Maybe you should create one?
+  					<% elsif @most_recent_problem.winner == current_user %>
+  						Congratulations on winning the last challenge! You now need to set a challenge for everybody else.
+  					<% elsif @most_recent_problem.winner == nil %>
+  						<% if question_master? %>
+                Your challenge has ended. You can grade it now.
+   					  <% else %>
+  						  The last challenge has not yet been graded by <%= @most_recent_problem.author.name %>. Remind him to do it soon, so the next round can begin!
+  						<% end %>
+            <% else %>
+  						<%= @most_recent_problem.winner.name%> won the last challenge. Remind him to set the next one soon!
+  					<% end %>
+  				</div>
+  				<% if active_problem? || @most_recent_problem.winner == current_user || question_master? %>
+  				<div class="panel-footer text-center">
+  					<% if active_problem? %>
+  						<%= link_to 'View challenge', @most_recent_problem, class: 'btn btn-info btn-primary' %>
+  					<% elsif @most_recent_problem.winner == current_user %>
+  						<%= link_to 'Create challenge', new_problem_url, class: 'btn btn-default btn-success' %>
+  					<% elsif @most_recent_problem.winner == nil and question_master? %>
+  						<%= link_to 'Grade challenge', edit_problem_path(@most_recent_problem), class: 'btn btn-default btn-primary' %>
+  					<% end %>
+  				</div>
+  				<% end %>
+  			</div>
+  		</div>
 	</div>
 	<div class="row">
 		<div class="col-md-6">
