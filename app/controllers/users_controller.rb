@@ -16,12 +16,17 @@ class UsersController < ApplicationController
 
 	def create
 		@user = User.new(user_params)
-		if @user.valid?
+		agree = params[:agree_to_tos]
+
+		if @user.valid? and agree == '1'
 			@user.save
 			log_in @user
 			redirect_to root_url
 		else
 			flash[:danger] = @user.errors.full_messages.first
+			if agree != '1'
+				flash[:danger] = "You must accept the Terms of Service"
+			end
 			render 'new'
 		end
 	end
