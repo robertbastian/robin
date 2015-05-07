@@ -122,9 +122,9 @@ ack2 = Problem.create(title: "Sliding Window Protocol",
 val in, out = OneOne[T]
 val get_ack, ack = OneOne[Int]
 </code></pre>",
-	expiry: 2.days.from_now,
+	expiry: 11.minutes.from_now,
 	user_id: rob.id,
 	score: 0,
-	created_at: 3.days.ago,
-	updated_at: 3.days.ago)
+	created_at: (3.days-11.minutes).ago,
+	updated_at: (3.days-11.minutes).ago)
 
