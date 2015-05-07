@@ -14,7 +14,7 @@
 			<td><%=user.problems.size %></td>
 			<td><%=user.solutions.size %></td>
 			<td><%=Problem.where(:winner => user).count %>
-			<td><strong><%=user.score%></strong></td>
+			<td><strong><%= pointsFor user%></strong></td>
 		</tr>
 	<% end %>
 </table>

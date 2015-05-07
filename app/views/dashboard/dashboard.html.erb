@@ -84,18 +84,10 @@
 				<table class="table panel-body">
 				<tr><th>#</th><th>Name</th><th>Points</th>
 				<% (@start_pos..@start_pos+2).each do |i|; user = @leaders[i] %>
-				<tr <%= if user == current_user then "class=info"end%>><td><%= i+1 %></td><td><%=link_to user.name, user%></td><td><%=user.score%></td></tr>
+				<tr <%= if user == current_user then "class=info"end%>><td><%= i+1 %></td><td><%=link_to user.name, user%></td><td><%= pointsFor user%></td></tr>
 				<% end %>
   				</table>
 			</div>
-			<!-- <div class="panel panel-default">
-				<div class="panel-heading">
-					<h3 class="panel-title">Your score</h3>
-				</div>
-				<div class="panel-body">
-					<h1><%= current_user.score %> points</h1>
-				</div>
-			</div> -->
 			<div class="panel panel-default">
 				<div class="panel-body row">
 					<div class='col-xs-6 col-xs-offset-3'><%= image_tag("robin_rect.png", class: "img-responsive",alt: "") %>

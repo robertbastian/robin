@@ -53,7 +53,7 @@ class ProblemsController < ApplicationController
     def update
         @problem = Problem.find(params[:id])
         @winner = Solution.find(params.require(:winning_solution_id).to_i).user
-        if @problem.update(winner_id: @winner.id) and @winner.increment!(:score)
+        if @problem.update(winner_id: @winner.id)
             redirect_to @problem
         else
             render 'edit'
@@ -71,7 +71,6 @@ class ProblemsController < ApplicationController
 			# Apologies for the confusing names
 			score = params.require('s_' + s.id.to_s).to_i
 			s.increment!(:score, by=score)
-			s.user.increment!(:score, by=score)
 		end
 
 		best_solution = @solutions.max_by { |s| s.score }

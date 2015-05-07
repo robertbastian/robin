@@ -23,7 +23,6 @@ class SolutionsController < ApplicationController
 			@solution.problem = most_recent_problem
 			@solution.save
 			@solution.problem.increment!(:score, by = params[:like].to_i)
-			@solution.problem.author.increment!(:score, by = params[:like].to_i)
 			# all users submitted
 			if @solution.problem.solutions.length == User.count - 1
 				@solution.problem.update(:expiry => DateTime.now)
