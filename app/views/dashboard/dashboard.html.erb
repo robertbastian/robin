@@ -11,9 +11,9 @@
 			  	<div class="panel-heading">
 				    <h3 class="panel-title">Current Challenge</h3>
 				</div>
-				<div class="panel-body">
+				<div class="panel-body text-center">
 					<% if active_problem? %>
-						Click <%= link_to  'here', problem_url(most_recent_problem) %> to go to the most recent challenge, <%= most_recent_problem.title %>, which was added by <%= link_to most_recent_problem.author.name, most_recent_problem.author %>
+						<h3><%= most_recent_problem.title %></h1><h4><small>By: <%= link_to most_recent_problem.author.name, most_recent_problem.author %></small></h4>
 					<% else %>
 						<!-- <p>No current problem</p> -->
 						<% if !@most_recent_problem %>
