@@ -22,7 +22,8 @@ class SolutionsController < ApplicationController
 			@solution = current_user.solutions.build(params.require(:solution).permit(:text))
 			@solution.problem = most_recent_problem
 			@solution.save
-			@solution.problem.update(:score => @solution.problem.score + params[:like].to_i)
+			@solution.problem.increment!(:score, by = params[:like].to_i)
+			@solution.problem.author.increment!(:score, by = params[:like].to_i)
 			# all users submitted
 			if most_recent_problem.solutions.length == User.count
 				most_recent_problem.expiry = DateTime.now
