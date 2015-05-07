@@ -48,16 +48,30 @@
 				<div class="panel-body text-center badges">
 					<table style="width:224px;margin-left:-112px;left:50%;position:relative">
 						<tr>
-							<td data-toggle="tooltip" title="Commentator">
+							<td data-toggle="tooltip" title="Commentator" data-container='body' style="color: #A18062">
 									<span class="fa-stack fa-4x"><i class="fa fa-certificate fa-stack-2x"></i><i class="fa fa-comment-o fa-stack-1x fa-inverse"></i></span>
 							</td>
-							<td data-toggle="tooltip" title="Short and sweet">
+							<td data-toggle="tooltip" title="Short and sweet" data-container='body' style="color:#896744">
 									<span class="fa-stack fa-4x"><i class="fa fa-certificate fa-stack-2x"></i><i class="fa fa-bars fa-stack-1x fa-inverse"></i></span>
 							</td>
 						</tr>
 					</table>
 				</div>
 			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">FAQ</h3>
+				</div>
+				<div class="panel-body">
+					Have you taken a moment to read through the FAQ? Check it out and find out the best way to get the most out of <span class="smallcaps">ROBIN</span>.
+				</div>
+				<div class="panel-footer text-center">
+					<a href="/faq" class="btn btn-default">Answer my questions</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md-6">
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h3 class="panel-title">Leaderboard</h3>
@@ -69,15 +83,6 @@
 				<% end %>
   				</table>
 			</div>
-		</div>
-
-		<div class="col-md-6">
-
-			<div class="panel panel-default">
-				<div class="panel-body row">
-					<div class='col-xs-6 col-xs-offset-3'><%= image_tag("robin_justbird_square.PNG", class: "img-responsive",alt: "") %>
-				</div></div>
-			</div>
 			<!-- <div class="panel panel-default">
 				<div class="panel-heading">
 					<h3 class="panel-title">Your score</h3>
@@ -87,15 +92,9 @@
 				</div>
 			</div> -->
 			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h3 class="panel-title">FAQ</h3>
-				</div>
-				<div class="panel-body">
-					Have you taken a moment to read through the FAQ? Check it out and find out the best way to get the most out of <span class="smallcaps">ROBIN</span>.
-				</div>
-				<div class="panel-footer text-center">
-					<a href="/faq" class="btn btn-default">Answer my questions</a>
-				</div>
+				<div class="panel-body row">
+					<div class='col-xs-6 col-xs-offset-3'><%= image_tag("robin_rect.png", class: "img-responsive",alt: "") %>
+				</div></div>
 			</div>
 		</div>
 	</div>
