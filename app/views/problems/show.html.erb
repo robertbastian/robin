@@ -62,22 +62,7 @@
 	
 	<% if question_master? and @problem.expiry < DateTime.now and not @problem.winner_id %>
 
-		<h2>Rate the solutions</h2>
-
-		<%= form_for @problem, html: {method: :patch} do |f| %>
-			<% @solutions.each do |s| %>
-				<div class="panel panel-default">
-					<div class="panel-body">
-						<pre><code><%= s.text.html_safe %></code></pre>
-					</div>
-					<div class="panel-footer">
-						Rating:
-						<input class="rating-slider" type="text" data-slider-min="1" data-slider-max="100" data-slider-step="1" data-slider-value="60" data-slider-tooltip="hide" name="s_<%= s.id %>" />
-					</div>
-				</div>
-			<% end %>
-			<%= f.submit "Rate 'em!", class: "btn btn-primary" %>
-		<% end %>
+		<%= button_to 'Score the solutions', edit_problem_path(@problem), class: 'btn btn-primary' %></p>
 
 	<% end %>
 </div>
