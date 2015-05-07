@@ -6,7 +6,7 @@
 		<th>Points</th>
 	</tr>
 	<% @users.each do |user| %>
-		<tr <%if user == current_user then 'class=info' end%>>
+		<tr <%=if user == current_user then 'class=info' end%>>
 			<td><%= link_to user.name, user_url(user) %></td>
 			<td><%=user.score%></td>
 		</tr>
