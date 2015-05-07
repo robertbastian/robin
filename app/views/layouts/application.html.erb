@@ -69,16 +69,20 @@
 	</nav>
 
 	<div class='container'>
-		<% if flash[:notice] %>
-			<div class='alert alert-info'>
-				<%= flash[:notice] %>
-			</div>
-		<% end; if flash[:danger] %>
-			<div class="alert alert-danger">
-				<%= flash[:danger] %>
-			</div>
-		<% end %>
-    </div>
+		<div class='row'>
+			<div class='col-sm-6 col-sm-offest-3'>
+ 				<% if flash[:notice] %>
+					<div class='alert alert-info'>
+						<%= flash[:notice] %>
+			  	</div>
+				<% end; if flash[:danger] %>
+					<div class="alert alert-danger">
+						<%= flash[:danger] %>
+					</div>
+				<% end %>
+    	</div>
+		</div>
+	</div>
     <div class="container-fluid">
 
 		<%= yield %>
