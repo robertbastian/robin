@@ -66,8 +66,14 @@ class ProblemsController < ApplicationController
 			# s.id.to_s is the solution's id converted to string
 			# The name of the field are s_<s.id> so catenate 's_' to s.id.to_s
 			# Apologies for the confusing names
-			s.increment!(:score, params.require('s_' + s.id.to_s).to_i)
+			score = params.require('s_' + s.id.to_s).to_i
+			s.increment!(:score, by=score)
+			s.user.increment!(:score, by=score)
 		end
+
+		best_solution = @solutions.max_by { |s| s.score }
+		@problem.winner_id = best_solution.user.id
+		@problem.save
 
 		redirect_to @problem
 	end
