@@ -130,6 +130,7 @@ val get_ack, ack = OneOne[Int]
 Solution.create(
 	text: "This is an excellent solution that should get full marks",
 	user_id: aiken.id,
+	problem_id: ack2.id,
 	created_at: (2.days - 1.hours).ago,
 	updated_at: (2.days - 1.hours).ago,
 	score: 0,
