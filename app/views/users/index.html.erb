@@ -3,12 +3,16 @@
 <table class="table">
 	<tr>
 		<th>User</th>
+		<th>Challenges</th>
+		<th>Solutions</th>
 		<th>Points</th>
 	</tr>
 	<% @users.each do |user| %>
 		<tr <%=if user == current_user then 'class=info' end%>>
 			<td><%= link_to user.name, user_url(user) %></td>
-			<td><%=user.score%></td>
+			<td><%=user.problems.size %></td>
+			<td><%=user.solutions.size %></td>
+			<td><strong><%=user.score%></strong></td>
 		</tr>
 	<% end %>
 </table>
