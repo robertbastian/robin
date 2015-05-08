@@ -123,7 +123,7 @@ val get_ack, ack = OneOne[Int]
 </code></pre>",
 	expiry: 11.minutes.from_now,
 	user_id: rob.id,
-	score: 0,
+	score: 57,
 	created_at: (3.days-11.minutes).ago,
 	updated_at: (3.days-11.minutes).ago)
 	
