@@ -28,10 +28,10 @@
 	<div class='well'><%= @problem.text.html_safe %></div>
 
 	<% # Which solutions should be shown? %>
-	<% if !@is_most_recent || question_master? || @problem.winner != nil%>
+	<% if !@is_most_recent || question_master? %>
 		<% # This is an old problem or this is the current problem and you are the question master %>
 		<h4>Solutions</h4>
-		<%= @col = {:user => true, :problem => false}; render "solutions/solutions_table" %>
+		<%= @col = {:user => @problem.winner != nil, :problem => false}; render "solutions/solutions_table" %>
 	<% elsif  @my_solution.size > 0 %>
 		<% # This is the current problem and you have submitted a solution %>
 		<h4>Your solution</h4>
@@ -59,7 +59,7 @@
 		<% end %>
 	<% end %>
 
-	
+
 	<% if question_master? and @problem.expiry < DateTime.now and not @problem.winner_id %>
 <div class='text-center'>
 		<%= link_to 'Mark the solutions', edit_problem_path(@problem), class: 'btn btn-primary btn-lg' %>
