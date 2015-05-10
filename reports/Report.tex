@@ -51,7 +51,7 @@ The following diagram was our conceptual run-through of how one round of our rou
 \begin{enumerate}
 \item While no challenge is active, the \underline{players} can submit a challenge
 \begin{itemize}
-\item Each challenge comprises of
+\item Each challenge comprises
 \begin{itemize}
 \item Title, description, sample dataset / sample input
 \item A grading method
@@ -73,7 +73,7 @@ The following diagram was our conceptual run-through of how one round of our rou
 \end{itemize}
 \item Everyone else becomes a \underline{solver}. Each \underline{solver}:
 \begin{itemize}
-\item Gets a challenge and solve the challenge
+\item Gets a challenge and solves the challenge
 \item \emph{Submits their solution as code? Or as text? Sent by email or through a web app or directly to a server?}
 \item \emph{A more advanced: allow solvers to modify or resubmit solutions}
 \end{itemize}
@@ -265,10 +265,10 @@ end
 \section{Back end design}
 Initially we looked into using a \emph{Scala}-run server, but quickly we realised that the database library (\emph{Slick}) wasn’t well documented and the server itself would be very slow. Thus we changed to using \emph{Ruby on Rails} and \emph{SQLite}.
 
-\emph{Rails} is incredible powerful and versatile, but most importantly, it has been used for thousands and thousands of applications already. This means that there is a lot of documentation and support for common issues, as well as quick-start guides to help us get up and running in the short amount of time we had. Moreover, all of us were new to the \emph{Ruby} programming language and so were excited to try it out.
+\emph{Rails} is incredibly powerful and versatile, but most importantly, it has been used for thousands and thousands of applications already. This means that there is a lot of documentation and support for common issues, as well as quick-start guides to help us get up and running in the short amount of time we had. Moreover, all of us were new to the \emph{Ruby} programming language and so were excited to try it out.
 
 \section{Front end design}
-Initially we tried building the website using a basic responsive framework \emph{Skeleton} (\url{http://getskeleton.com}) but soon realised that it would take too long to write the CSS for everything, so we moved to Twitter’s \\emph{Bootstrap} (\url{http://getbootstrap.com}), which is more complete. We also are using \emph{FontAwesome} icons to improve usability.
+Initially we tried building the website using a basic responsive framework \emph{Skeleton} (\url{http://getskeleton.com}) but soon realised that it would take too long to write the CSS for everything, so we moved to Twitter’s \emph{Bootstrap} (\url{http://getbootstrap.com}), which is more complete. We also are using \emph{FontAwesome} icons to improve usability.
 
 As the website is built on a responsive framework, it is fully compatible to view on a mobile website, although the expectation is that users would likely use it from a computer as they can type out challenges and solutions more easily.
 
