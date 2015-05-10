@@ -3,6 +3,8 @@
 \usepackage{hyperref}
 \usepackage{graphicx}
 \usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
 
 \title{Group Project Report:\\Robin}
 \author{Robert Bastian\\Paavan Buddhdev\\Aiken Cairnscross\\James Dai\\Alistair Gavin\\\\\\Supervisor: Ivo Sluganovic\\Corporate Sponsor: \emph{Palantir}\\\\University of Oxford}
@@ -43,7 +45,7 @@ Our chosen idea was the round-robin challenge system. We had three main reasons 
 \end{enumerate}
 While the idea may initially seem quite simple, we were wary of being too ambitious, as few of us had worked on a project like this before.
 
-\section{How the game goes}
+\section{Proposed lifecycle of a challenge}
 The following diagram was our conceptual run-through of how one round of our round-robin tournament would go. In this diagram the actors are underlined, and any potential ideas, advanced features or undecided design decisions are italicized.
 
 \begin{enumerate}
@@ -95,34 +97,17 @@ The following diagram was our conceptual run-through of how one round of our rou
 \item \emph{Include a bias to incentivise people to choose to set challenges – setting challenges gets more points / placed at top of board?}
 \end{itemize}
 \end{itemize}
-\item Leader-board updated with points of each participant
-\item Challenge archived
+\item Leaderboard updated with points of each participant
+\item Challenge archived\\\\\\\\
 \end{enumerate}
 
-\section{Collaboration methods and group roles}
-We decided to use Slack as our main communication method. Slack is a multi-platform program which allowed us to converse, and organise our conversations in different channels, each with a specific purpose. This allowed us to discuss the tasks that needed to be done separately, which different was really useful when working on separate modules of the application.
-
-We used the Git version control system to collaborate on the code. It was essential as it allowed us to keep working on the same project when not in the same place, which was especially important during the break, when we were all very far away from each other and had very different schedules.
-
-After initially considering using Asana to organise tasks, we decided that it would overcomplicate things, and that Slack and Git were sufficient for our needs.
-
-\section{Design decisions: back-end}
-Initially we looked into using a Scala-run server, but quickly we realised that the database library (Slick) wasn’t well documented and the server itself would be very slow. Thus we changed to using Ruby on Rails, paired with SQLite.
-
-Rails is incredible powerful and versatile, but most importantly, it has been used for thousands and thousands of applications already. This means that there is a lot of documentation and support for common issues, as well as quick-start guides to help us get up and running in the short amount of time we had. Moreover, all of us were new to the Ruby programming language and so were excited to try it out.
-
-\section{Design decisions: front-end}
-Initially we tried building the website using a basic responsive framework Skeleton (\url{http://getskeleton.com}) but soon realised that it would take too long to write the CSS for everything, so we moved to Twitter’s Bootstrap (\url{http://getbootstrap.com}), which is more complete. We also are using FontAwesome icons to improve usability.
-
-As the website is built on a responsive framework, it is fully compatible to view on a mobile website, although the expectation is that users would likely use it from a computer as they can type out challenges and solutions more easily.
-
 \section{Use cases}
-The main use cases are in Fig. 1.1-4
+The main use cases are outlined in Figures 1.1-1.4
 {
 \floatstyle{boxed}
 \restylefloat{figure}
 
-\begin{figure}[h]
+\begin{figure}[H]
 \caption{Logging in}
 \begin{description}
 \item[Primary actor] Users
@@ -137,7 +122,7 @@ The main use cases are in Fig. 1.1-4
 \end{description}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[H]
 \caption{Setting a challenge}
 \begin{description}
 \item[Primary actor] Question Master
@@ -156,7 +141,7 @@ The main use cases are in Fig. 1.1-4
 \end{description}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[H]
 \caption{Submitting a solution}
 \begin{description}
 \item[Primary actor] Solvers
@@ -176,7 +161,7 @@ The main use cases are in Fig. 1.1-4
 \end{description}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[H]
 \caption{Scoring}
 \begin{description}
 \item[Primary actor] Users
@@ -197,11 +182,25 @@ The main use cases are in Fig. 1.1-4
 \end{figure}
 }
 
-\chapter{System integration and report}
+\clearpage
+
+\section{Collaboration methods and group roles}
+We decided to use Slack as our main communication method. Slack is a multi-platform program which allowed us to converse, and organise our conversations in different channels, each with a specific purpose. This allowed us to discuss the tasks that needed to be done separately, which different was really useful when working on separate modules of the application.
+
+We used the Git version control system to collaborate on the code. It was essential as it allowed us to keep working on the same project when not in the same place, which was especially important during the break, when we were all very far away from each other and had very different schedules.
+
+After initially considering using Asana to organise tasks, we decided that it would overcomplicate things, and that Slack and Git were sufficient for our needs.
+
+\chapter{Design and Implementation}
 After we had our specification and our plan, our next step was to implement the various components (e.g. the web interface, the Rails server, the structure for setting challenges, the structure for rating challenges and solutions, etc.). This second half of this report shall explain how we planned these components, and then integrated them together. It will also go over how we tested the system and the challenges we encountered.
 
 \section{Design/layout mockups}
-The following are some of the initial drawings from one of our first sessions for what the site structure will look like.
+Figures 2.1-2.3 are some of the initial drawings from one of our first sessions for what the site structure will look like.
+
+\begin{figure}[H]
+\centerline{\includegraphics[height=6cm]{dashboardMockup}}
+\caption{Dashboard}
+\end{figure}
 
 \begin{figure}[H]
 \centerline{\includegraphics[height=6cm]{newProblemMockup}}
@@ -214,7 +213,7 @@ The following are some of the initial drawings from one of our first sessions fo
 \end{figure}
 
 \section{Site structure and state diagram}
-The following diagrams are the initial outlines for the app’s database (model), its website structure (views), and a state diagram.
+Figures 2.4-2.6 are the initial outlines for the app’s database (model) and its website structure (views).
 
 \begin{figure}[H]
 \includegraphics[width=\textwidth]{schema}
@@ -231,24 +230,48 @@ The following diagrams are the initial outlines for the app’s database (model)
 \caption{User authorization}
 \end{figure}
 
-\begin{figure}[H]
-\includegraphics[width=\textwidth]{structure}
-\caption{Site structure}
-\end{figure}
-
 \section{States}
 There are 4 main states. This is how the application decides which state we are in from the database.
 
-\begin{enumerate}
-	\item \textbf{Anyone is able to submit a challenge}\hfill\\
-	If there is no previous challenge then anyone can submit a challenge. This is the current state if active\_problem is false and @most\_recent\_problem is nil \\
-	\item \textbf{The QM can set a challenge}\hfill\\
-	If the previous challenge has ended then the winner of that challenge can set the next challenge. This is the current state if @most\_recent\_problem.winner is not nil and active\_problem is false\\
-	\item \textbf{The solvers can submit solutions}\hfill\\
-	If the QM has submitted a challenge and it has not ended yet, the solvers can all submit solutions. One solver can submit one solution. This is the state if active\_problem is true.\\
-	\item \textbf{The QM can grade the solutions}\hfill\\
-	When the challenge has ended the QM can grade the solutions. The challenge ends when either it expires (using the date given by the QM) or when all the solvers have submitted solutions. This is the state if active\_problem is false and @most\_recent\_problem.winner is nil\\
-\end{enumerate}
+\begin{description}
+  \item[Anyone is able to submit a challenge] \hfill \\ If there is no previous challenge then anyone can submit a challenge. This is the current state if \texttt{active\_problem?} is false and \texttt{most\_recent\_problem} is \texttt{nil}
+  \item[The QM can set a challenge] \hfill \\ If the previous challenge has ended then the winner of that challenge can set the next challenge. This is the current state if \texttt{most\_recent\_problem.winner} is not \texttt{nil} and \texttt{active\_problem?} is false
+  \item[The solvers can submit solutions] \hfill \\ If the QM has submitted a challenge and it has not ended yet, the solvers can all submit solutions. One solver can submit one solution. This is the state if \texttt{active\_problem?} is true.
+  \item[The QM can grade the solutions] \hfill \\ When the challenge has ended the QM can grade the solutions. The challenge ends when either it expires (using the date given by the QM) or when all the solvers have submitted solutions. This is the state if \texttt{active\_problem?} is false and \texttt{most\_recent\_problem.winner} is nil
+\end{description}
+
+\begin{figure}[h]
+\begin{verbatim}
+module ProblemHelper
+    def active_problem?
+        ps = Problem.order(:created_at => :desc)
+        if ps.size == 0 then false else ps.first.expiry > DateTime.now end
+    end
+
+    def most_recent_problem
+        Problem.order(:created_at => :desc).first
+    end
+end
+\end{verbatim}
+\caption{The \texttt{ProblemHelper} class used to determine the app's state}
+\end{figure}
+
+\begin{figure}[H]
+\includegraphics[width=\textwidth]{structure}
+\caption{Proposed state diagram}
+\end{figure}
+
+
+\section{Back end design}
+Initially we looked into using a Scala-run server, but quickly we realised that the database library (Slick) wasn’t well documented and the server itself would be very slow. Thus we changed to using Ruby on Rails, paired with SQLite.
+
+Rails is incredible powerful and versatile, but most importantly, it has been used for thousands and thousands of applications already. This means that there is a lot of documentation and support for common issues, as well as quick-start guides to help us get up and running in the short amount of time we had. Moreover, all of us were new to the Ruby programming language and so were excited to try it out.
+
+\section{Front end design}
+Initially we tried building the website using a basic responsive framework Skeleton (\url{http://getskeleton.com}) but soon realised that it would take too long to write the CSS for everything, so we moved to Twitter’s Bootstrap (\url{http://getbootstrap.com}), which is more complete. We also are using FontAwesome icons to improve usability.
+
+As the website is built on a responsive framework, it is fully compatible to view on a mobile website, although the expectation is that users would likely use it from a computer as they can type out challenges and solutions more easily.
+
 
 \section{Tests}
 Throughout building the application we have been testing with sample problems and solutions to get everything working. When it was complete, we allowed seven real-world (non-CS!) testers onto our server to try it out, and were given feedback praising the design and its ease-of-use. A few bugs (regarding mobile website sizing and a link on the FAQ page) were also squashed.
@@ -256,7 +279,7 @@ Throughout building the application we have been testing with sample problems an
 \section{Extensions}
 One extension that would help would be to create individual domains for different companies or groups to use, in the same way that Slack does. This would allow more specialised questions for the companies using them.
 
-We have a template in place on the dashboard where awards would go, but have not implemented them. Awards for a coding challenge would for example be best comments, most concise code, etc. Implementing an awards system would help by increasing competition between users.
+We have a template in place on the dashboard where awards would go, but have not implemented them. Awards for a coding challenge would for example be `Best Comments`, `Most Concise Code`, etc. Implementing an awards system would help by increasing competition between users.
 
 \appendix
 
